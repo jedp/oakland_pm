@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+class PhoneField(models.CharField): pass
+
 class School(models.Model):
     name = models.TextField()
     address = models.ForeignKey('Address')
@@ -21,12 +23,12 @@ class Contact(models.Model):
     """
     Contact info for projects and events
     """
-    fullname = models.StringField(null=True)
-    role = models.StringField(null=True)
-    phone = models.PhoneField(null=True)
+    fullname = models.TextField(null=True)
+    role = models.TextField(null=True)
+    phone = PhoneField(null=True)
     smsok = models.BooleanField(default=False)
-    tdd = models.PhoneField(null=True)
-    fax = models.PhoneField(null=True)
+    tdd = PhoneField(null=True)
+    fax = PhoneField(null=True)
     email = models.EmailField(null=True)
     web = models.URLField(null=True)
 
@@ -34,7 +36,7 @@ class Category(models.Model):
     """
     Moderated set of categories for events
     """
-    name = models.StringField(unique=True)
+    name = models.TextField(unique=True)
 
 class Location(models.Model):
     """
@@ -45,33 +47,33 @@ class Location(models.Model):
     longitude = models.FloatField(null=True)
 
 class BusStop(models.Model):
-    company = models.StringField()
-    line = models.StringField()
-    name = models.StringField()
+    company = models.TextField()
+    line = models.TextField()
+    name = models.TextField()
     location = models.ForeignKey(Location)
 
 class BartStop(models.Model):
-    line = models.StringField()
-    name = models.StringField()
+    line = models.TextField()
+    name = models.TextField()
     location = models.ForeignKey(Location)
 
 class Address(models.Model):
-    name = models.StringField()
-    street = models.StringField()
-    city = models.StringField(default='Oakland')
+    name = models.TextField()
+    street = models.TextField()
+    city = models.TextField(default='Oakland')
     state = models.CharField(max_length=2, default='CA')
     zipcode = models.PositiveIntegerField()
     district = models.PositiveIntegerField()
 
     # calculate on save
-    bus = models.ManyToManyField(BusLine, null=True)
+    bus = models.ManyToManyField(BusStop, null=True)
     bart = models.ManyToManyField(BartStop, null=True)
 
 class Organization(models.Model):
     """
     An organization that offers Programs
     """
-    name = models.StringField()
+    name = models.TextField()
     about = models.TextField()
     headoffice = models.ForeignKey(Location)
     otherlocations = models.ManyToManyField(Location)
@@ -88,7 +90,7 @@ class Program(models.Model):
     A single program for a single age group.
     """
     about = models.TextField()
-    program = models.ForeignKey(Program)
+    organization = models.ForeignKey(Organization)
     contacts = models.ManyToManyField(Contact, null=True)
 
     # how much does it cost, and whom is it for
@@ -104,7 +106,7 @@ class Program(models.Model):
     # "Every Tuesday and Thursday from 4-5
     # "for three weeks starting July 10"
     # We convert this to a list of dates
-    datespec = models.StringField()
+    datespec = models.TextField()
     dates = models.ManyToManyField(EventDate)
 
     dropin = models.BooleanField(default=False)
@@ -123,9 +125,9 @@ class Comment(models.Model):
     A comment left by a user on an event
     """
     user = models.ForeignKey(User)
-    event = models.ForeignKey(Event)
+    program = models.ForeignKey(Program)
     flagged = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_add_now=True)
+    date = models.DateTimeField(auto_now_add=True)
     text = models.CharField(max_length=140)
 
     class Meta:
