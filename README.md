@@ -18,15 +18,8 @@ tumblr, to bring current and personalized information to them.
 Contributors
 ------------
 
-- [Jed Parsons](https://github.com/jedp)
-- Kristi Holohan
-- Sonja Totten-Harris
-- Telly Koosis
-- Joshua Goldenberg
-- Christopher Yap
-- Dave Meyer
-- Aditya Pai
-- Raimundo Martinez
-- [Andrew Hao](https://github.com/andrewhao)
+[Jed Parsons](https://github.com/jedp), Kristi Holohan, Sonja Totten-Harris,
+Telly Koosis, Joshua Goldenberg, Christopher Yap, Dave Meyer, Aditya Pai,
+Raimundo Martinez, [Andrew Hao](https://github.com/andrewhao)
 
 
