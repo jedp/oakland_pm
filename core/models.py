@@ -1,4 +1,3 @@
-from django.utils import unittest
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
@@ -26,10 +25,10 @@ class Contact(models.Model):
     """
     fullname = models.TextField(null=True)
     role = models.TextField(null=True)
-    phone = PhoneField(null=True)
+    phone = PhoneField(null=True, max_length=20)
     smsok = models.BooleanField(default=False)
-    tdd = PhoneField(null=True)
-    fax = PhoneField(null=True)
+    tdd = PhoneField(null=True, max_length=20)
+    fax = PhoneField(null=True, max_length=20)
     email = models.EmailField(null=True)
     web = models.URLField(null=True)
 
@@ -76,8 +75,8 @@ class Organization(models.Model):
     """
     name = models.TextField()
     about = models.TextField()
-    headoffice = models.ForeignKey(Location)
-    otherlocations = models.ManyToManyField(Location)
+    headoffice = models.ForeignKey(Location, related_name='office')
+    otherlocations = models.ManyToManyField(Location, related_name='locations')
     contacts = models.ManyToManyField(Contact)
 
     class Admin:
@@ -132,7 +131,7 @@ class Comment(models.Model):
     text = models.CharField(max_length=140)
 
     class Meta:
-        ordering = ["event"]
+        ordering = ["date"]
 
     class Admin:
         pass
@@ -140,10 +139,3 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.text
 
-class ModelsTestCase(unittest.TestCase):
-    pass
-
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(ModelsTestCase('test core models'))
-    return suite
