@@ -39,14 +39,15 @@ Raimundo Martinez,
 Set-up
 ------
 
+
 Required
 ''''''''
-
+- [Source]()
 - (Mac) Xcode >= 3.2
 - `sudo pip install -U virtualenv`
 - `sudo pip install -U virtualenvwrapper`
+- `sudo pip install Mercurial`
 - Add in bash `source /usr/local/bin/virtualenvwrapper.sh`
-- `Mercurial`_ 
 
 Recommended
 '''''''''''
