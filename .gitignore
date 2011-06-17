@@ -1,9 +1,9 @@
 # only settings.py.dist is tracked
-settings.py
+settings_local.py
 logfile
 .tmproj
+*.db
 *.pyc
-
 *.swp
 *.swo
 *.un~

@@ -23,21 +23,34 @@ Telly Koosis, Joshua Goldenberg, Christopher Yap, Dave Meyer, Aditya Pai,
 Greg Martin, Raimundo Martinez, [Andrew Hao](https://github.com/andrewhao)
 
 
+:Version: 0.0.1 of 2011/17/11 
+:Dedication:  HEP!
+
 
 Set-up
 ------------
-*System*
+	
+----------
+ System
+----------
+*Required*	
 * Xcode > 3.1
-* sudo pip install -U virtualenv
-* sudo pip install -U virtualenvwrapper
-** add in bash source /usr/local/bin/virtualenvwrapper.sh
+* `sudo pip install -U virtualenv`
+* `sudo pip install -U virtualenvwrapper`
+* Add in bash source /usr/local/bin/virtualenvwrapper.sh
 * [Mercurial]: http://mercurial.selenic.com/
-* Postgress --- http://www.enterprisedb.com/products-services-training/pgdownload
------
-* (homebrew) ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
-**
------
 
+*Recommended*
+* [Homebrew](http://mxcl.github.com/homebrew/)::
 
-*Python*
-See requirements.txt
+    ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+
+----------
+ Database
+----------
+* _Local_: Sqlite3 (or [Postgres](http://www.enterprisedb.com/products-services-training/pgdownload) if you want to set it up)
+* _Production_: [Postgres](http://www.enterprisedb.com/products-services-training/pgdownload)
+----------
+ Python
+----------
+* See requirements.txt

@@ -26,4 +26,3 @@ DATABASES = {
 SECRET_KEY = 'Attack at dawn!'
 
 print "sourced settings_local"
-
