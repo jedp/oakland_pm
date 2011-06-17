@@ -1,9 +1,9 @@
 [submodule "static/js/headjs"]
-	path = static/js/headjs
-	url = git://github.com/headjs/headjs.git
+    path = static/js/headjs
+    url = https://git://github.com/headjs/headjs.git
 [submodule "static/js/backbone"]
-	path = static/js/backbone
-	url = https://github.com/documentcloud/backbone/
+    path = static/js/backbone
+    url = https://github.com/documentcloud/backbone/
 [submodule "static/js/underscore"]
-	path = static/js/underscore
-	url = https://github.com/documentcloud/underscore/
+    path = static/js/underscore
+    url = https://github.com/documentcloud/underscore/
