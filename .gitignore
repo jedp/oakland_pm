@@ -1,6 +1,15 @@
+.gitconfig
+
 # only settings.py.dist is tracked
 settings_local.py
+
+# possible pip side-effects
 logfile
+build
+src
+
+# turd files
+.DS_Store
 .tmproj
 *.db
 *.pyc
