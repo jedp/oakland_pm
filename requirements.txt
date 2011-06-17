@@ -1,8 +1,11 @@
-# to use:
-# mkvirtualenv %PROJECT% --no-site-packages
-# workon %PROJECT%
-# export PIP_RESPECT_VIRTUALENV=true
-# pip install -r requirements.txt
+# to use, run:
+# > mkvirtualenv %PROJECT% --no-site-packages
+# > workon %PROJECT%
+# > export PIP_RESPECT_VIRTUALENV=true
+# > pip install -r requirements.txt
+
+# to activate submodules (git):
+# > git submodule init
 
 # Django apps -------------------------------
 Django==1.3.0

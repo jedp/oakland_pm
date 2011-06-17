@@ -1,6 +1,6 @@
 [submodule "media/js/headjs"]
 	path = media/js/headjs
-	url = git://github.com/headjs/headjs.git
+	url = https://git://github.com/headjs/headjs.git
 [submodule "static/js/backbone"]
 	path = static/js/backbone
 	url = https://github.com/documentcloud/backbone/
