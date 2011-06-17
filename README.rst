@@ -1,3 +1,4 @@
+==========
 Oakland:PM
 ==========
 
@@ -18,9 +19,17 @@ tumblr, to bring current and personalized information to them.
 Contributors
 ------------
 
-[Jed Parsons](https://github.com/jedp), Kristi Holohan, Sonja Totten-Harris,
-Telly Koosis, Joshua Goldenberg, Christopher Yap, Dave Meyer, Aditya Pai,
-Greg Martin, Raimundo Martinez, [Andrew Hao](https://github.com/andrewhao)
+`Jed Parsons`_
+Kristi Holohan, 
+Sonja Totten-Harris,
+`Telly Koosis`_, 
+Joshua Goldenberg, 
+`Christopher Yap`_, 
+Dave Meyer, 
+Aditya Pai,
+Greg Martin, 
+Raimundo Martinez, 
+`Andrew Hao`_ 
 
 
 :Version: 0.0.1 of 2011/17/11 
@@ -28,29 +37,40 @@ Greg Martin, Raimundo Martinez, [Andrew Hao](https://github.com/andrewhao)
 
 
 Set-up
-------------
-	
-----------
- System
-----------
-*Required*	
-* Xcode > 3.1
-* `sudo pip install -U virtualenv`
-* `sudo pip install -U virtualenvwrapper`
-* Add in bash source /usr/local/bin/virtualenvwrapper.sh
-* [Mercurial]: http://mercurial.selenic.com/
+------
 
-*Recommended*
-* [Homebrew](http://mxcl.github.com/homebrew/)::
+Required
+''''''''
+
+- (Mac) Xcode >= 3.2
+- `sudo pip install -U virtualenv`
+- `sudo pip install -U virtualenvwrapper`
+- Add in bash `source /usr/local/bin/virtualenvwrapper.sh`
+- `Mercurial`_ 
+
+Recommended
+'''''''''''
+
+- (Mac) `Homebrew`_ ::
 
     ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 
-----------
- Database
-----------
-* _Local_: Sqlite3 (or [Postgres](http://www.enterprisedb.com/products-services-training/pgdownload) if you want to set it up)
+Database
+''''''''
+
+- _Local_: Sqlite3 (default)  (or `Postgres`_)
 * _Production_: [Postgres](http://www.enterprisedb.com/products-services-training/pgdownload)
-----------
- Python
-----------
-* See requirements.txt
+
+Python Modules
+''''''''''''''
+
+- See `requirements.txt`
+
+.. _Homebrew: http://mxcl.github.com/homebrew/
+.. _Postgres: http://www.enterprisedb.com/products-services-training/pgdownload
+.. _Mercurial: http://mercurial.selenic.com/
+
+.. _Telly Koosis: https://github.com/tkoosis/
+.. _Jed Parsons: https://github.com/jedp/
+.. _Andrew Hao: https://github.com/andrewhao/
+.. _Christopher Yap: https://github.com/buzzyapyear/
