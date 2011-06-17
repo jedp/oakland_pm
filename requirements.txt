@@ -13,6 +13,7 @@ south==0.7.3
 django-debug-toolbar==0.8.1
 django-extensions==0.4.1
 django-coverage==1.2
+django-socialregistration==0.4.4
 
 # Libraries ---------------------------------
 ipython==0.10
