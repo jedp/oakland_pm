@@ -25,4 +25,3 @@ DATABASES = {
 # In production, be sure to change this to something shiny and new
 SECRET_KEY = 'Attack at dawn!'
 
-print "sourced settings_local"
