@@ -2,8 +2,8 @@
 settings_local.py
 logfile
 .tmproj
+*.db
 *.pyc
-
 *.swp
 *.swo
 *.un~
