@@ -21,10 +21,11 @@
               {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"}
             );
 
-			opm.options = {
-				
-			};
-			opm.opmc = new opm.OaklandPm(opm.options);
+            head.ready(function() {
+                opm.options = {
+                };
+                opm.opmc = new opm.OaklandPm(opm.options);
+            });
                     
         </script>
 
