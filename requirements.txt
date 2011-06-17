@@ -4,8 +4,6 @@
 # export PIP_RESPECT_VIRTUALENV=true
 # pip install -r requirements.txt
 
-# imagemagick > 6.3.8 
-
 # Django apps -------------------------------
 Django==1.3.0
 south==0.7.3
