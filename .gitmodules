@@ -1,5 +1,5 @@
-[submodule "media/js/headjs"]
-	path = media/js/headjs
+[submodule "static/js/headjs"]
+	path = static/js/headjs
 	url = git://github.com/headjs/headjs.git
 [submodule "static/js/backbone"]
 	path = static/js/backbone
