@@ -113,17 +113,31 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+	# Django-admin-tools: needs to be declared before contrib.admin.
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
+
+    # Core apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.markup',
+    'django.contrib.humanize',
+    'django.contrib.comments',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
-
+	
+	# Django Externals
+	'django_coverage',
+	'django_extensions',
+    'admin_tools',
+    'south',	
+	
+	# Apps
     'core',
     'web',
     'sms',

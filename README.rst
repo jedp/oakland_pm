@@ -1,7 +1,7 @@
 Oakland:PM
 ==========
 
-A mobile appication for connecting with after-school enrichment programs
+A mobile application for connecting with after-school enrichment programs
 
 What We Are Building
 --------------------
@@ -20,6 +20,16 @@ Contributors
 
 [Jed Parsons](https://github.com/jedp), Kristi Holohan, Sonja Totten-Harris,
 Telly Koosis, Joshua Goldenberg, Christopher Yap, Dave Meyer, Aditya Pai,
-Raimundo Martinez, [Andrew Hao](https://github.com/andrewhao)
+Greg Martin, Raimundo Martinez, [Andrew Hao](https://github.com/andrewhao)
 
 
+
+Set-up
+------------
+*System*
+* [Mercurial]: http://mercurial.selenic.com/
+* Postgress
+
+
+*Python*
+See Requirements.txt
