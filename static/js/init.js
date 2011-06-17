@@ -12,7 +12,7 @@ var opm = {
 };
 
 // define api environment
-opm.constants.API_BASE_URL = '/api/?';
+opm.constants.API_BASE_URL = '/api/';
 
 // define common functions
 opm.common.apicall = function (path, params, callback) {
