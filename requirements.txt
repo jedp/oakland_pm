@@ -17,6 +17,6 @@ django-coverage==1.2
 # Libraries ---------------------------------
 ipython==0.10
 coverage==3.5b1
-PIL==1.1.7
+#PIL==1.1.7
 
 -e hg+http://bitbucket.org/izi/django-admin-tools@ead70718dac9#egg=django-admin-tools
