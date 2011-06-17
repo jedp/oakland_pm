@@ -1,6 +1,7 @@
 # only settings.py.dist is tracked
 settings.py
-
+logfile
+.tmproj
 *.pyc
 
 *.swp

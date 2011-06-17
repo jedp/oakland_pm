@@ -28,15 +28,15 @@ Set-up
 ------------
 *System*
 * Xcode > 3.1
-* (homebrew) ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
-** 
 * sudo pip install -U virtualenv
 * sudo pip install -U virtualenvwrapper
 ** add in bash source /usr/local/bin/virtualenvwrapper.sh
 * [Mercurial]: http://mercurial.selenic.com/
-* Postgress --- ?
-
-
+* Postgress --- http://www.enterprisedb.com/products-services-training/pgdownload
+-----
+* (homebrew) ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+**
+-----
 
 
 *Python*
