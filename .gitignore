@@ -1,3 +1,5 @@
+.gitconfig
+
 # only settings.py.dist is tracked
 settings_local.py
 
