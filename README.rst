@@ -58,8 +58,8 @@ Recommended
 Database
 ''''''''
 
-Local: Sqlite3 (default)  (or `Postgres`_)
-Production: [Postgres](http://www.enterprisedb.com/products-services-training/pgdownload)
+:Local: Sqlite3 (default)  (or `Postgres`_)
+:Production: [Postgres](http://www.enterprisedb.com/products-services-training/pgdownload)
 
 Python Modules
 ''''''''''''''
