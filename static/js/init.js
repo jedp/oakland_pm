@@ -16,5 +16,5 @@ opm.constants.API_BASE_URL = '/api/';
 
 // define common functions
 opm.common.apicall = function (path, params, callback) {
-    $.postJSON([line2.constants.API_BASE_URL, path].join(''), params, callback);
+    $.postJSON([opm.constants.API_BASE_URL, path].join(''), params, callback);
 }
