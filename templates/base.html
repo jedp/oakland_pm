@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Oakland:PM</title>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+        <script src="{{ STATIC_URL }}js/headjs/dist/head.min.js"></script>
+    </head>
+    <body role="page">
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <script>
+            head.js(
+              {jquery:     "http://code.jquery.com/jquery-1.5.2.min.js"},
+              {underscore: "{{ STATIC_URL }}js/underscore/underscore.js"},
+              {backbone:   "{{ STATIC_URL }}js/backbone/backbone.js"},
+              {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"}
+            );
+                    
+        </script>
+
+    </body>
+</html>
