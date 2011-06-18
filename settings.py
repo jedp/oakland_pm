@@ -214,6 +214,8 @@ TEST_RUNNER = 'django_coverage.coverage_runner.CoverageRunner'
 # the entire social auth system optional.
 
 try:
+    import openid
+    import oauth2
     import social_auth
     from settings_auth import *
     INSTALLED_APPS.append('social_auth')
