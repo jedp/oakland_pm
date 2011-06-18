@@ -20,12 +20,35 @@ opm.OaklandPm = function (options) {
     };
     
     this.vars = {
-        'current_page': $('#feed')
+        'is_setup': false
     };
     
     this.initNav();
-    this.setupPage('feed');
-    $(this.vars.current_page).show();
+    this.handlePageTransition('feed', {});
+    
+    // detect platform
+    if (navigator.platform.indexOf('iPhone') != -1 || navigator.platform.indexOf('iPod') != -1) {
+        switch (screen.width) {
+            case 480:
+                this.vars.current_platform = 'iPhone4';
+                break;
+            
+            default:
+                this.vars.current_platform = 'iPhone'
+                break;
+        }
+    }
+    else if (navigator.platform.indexOf('iPad') != -1) {
+        this.vars.current_platform = 'iPad';
+    }
+    else {
+        this.vars.current_platform = 'default';
+    }
+    
+    // hide address bar for mobile (not handling android yet)
+    if (this.vars.current_platform != 'default') {
+        setTimeout(function() { window.scrollTo(0, 1) }, 100);
+    }
 }
 
 opm.OaklandPm.prototype = {
@@ -53,18 +76,24 @@ opm.OaklandPm.prototype = {
     
     handlePageTransition: function(next_page_id, params) {
         $.ajax({
-            url: next_page_id,
+            url: [next_page_id, '/'].join(''),
             type: 'POST',
             dataType: 'html',
             data: params,
             complete: function(res, textStatus) {
-                $(this.elms.container).append(res);
-                $(this.vars.current_page).fadeOut('fast', function() {
-                    var next_page = $(this.vars.current_page).next('.page');
-                    $(next_page).fadeIn('slow');
-                    $(this.vars.current_page).remove();
-                    this.setupPage($(next_page).attr('id'));
-                }.bindScope(this));
+                $(this.elms.container).append(res.responseText);
+                if (!this.vars.is_setup) {
+                    $(this.vars.current_page).fadeOut('fast', function() {
+                        var next_page = $(this.vars.current_page).next('.page');
+                        $(next_page).fadeIn('slow');
+                        $(this.vars.current_page).remove();
+                        this.setupPage($(next_page).attr('id'));
+                    }.bindScope(this));
+                }
+                else {
+                    this.vars.current_page = $('#feed');
+                    $(this.vars.current_page).show();
+                }
             }.bindScope(this)
         });
     },
@@ -81,3 +110,38 @@ opm.OaklandPm.prototype = {
         
     }
 }
+
+/*
+opm.Page = function (proto) {
+    
+    var cls = function () {
+        this.init.apply(this, arguments);
+    }
+
+    cls.prototype = {
+        container: null,
+        is_setup: false,
+        init: function () {},
+        setup: function () {},
+        enter: function () {}
+    }
+
+    $.extend(cls.prototype, proto);
+
+    return cls;
+}
+
+opm.Feed = opm.Page({
+    init: function() {
+        
+    },
+    
+    setup: function() {
+        
+    },
+    
+    enter: function() {
+        
+    }
+});
+*/
