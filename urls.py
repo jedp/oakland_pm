@@ -16,10 +16,9 @@ urlpatterns = patterns('',
     # social auth
     url(r'', include('social_auth.urls')),
 
-    url('^logged-in/$', 'oakland_pm.web.views.home'),
+    url('^logged-in/$', 'oakland_pm.web.views.feed'),
 
-    url('^$', 'oakland_pm.web.views.home', name='home'),
-    
+    url('^$', 'oakland_pm.web.views.feed', name='feed'),
     url('^feed/', 'oakland_pm.web.views.feed'),
     url('^categories/', 'oakland_pm.web.views.categories'),
     url('^event/', 'oakland_pm.web.views.event'),
