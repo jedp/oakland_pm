@@ -40,6 +40,10 @@ opm.Feed = opm.Page({
         console.log('feed enter');
         opm.common.getMarkup('feed', {}, function(res){
             $(this.container).html(res);
+            
+        	$(this.container).find('li.attending').each(function(index){
+	    		new opm.Draw("check", this);
+    		});
         }.bindScope(this));
     }
 });
