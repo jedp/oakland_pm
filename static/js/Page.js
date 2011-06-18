@@ -1,37 +1,3 @@
-opm.Page = function (proto) {
-    
-    var cls = function () {
-        this.init.apply(this, arguments);
-    }
-
-    cls.prototype = {
-        container: null,
-        is_setup: false,
-        init: function () {},
-        setup: function () {},
-        enter: function () {}
-    }
-
-    $.extend(cls.prototype, proto);
-
-    return cls;
-}
-
-opm.Feed = opm.Page({
-    init: function() {
-        this.container = E('div');
-    },
-    
-    setup: function() {
-        console.log('setup');
-    },
-    
-    enter: function() {
-        console.log('enter');
-    }
-});
-
-
 opm.pages = {
     _current: null,
     _hider: E('div'),
@@ -65,3 +31,72 @@ opm.pages = {
     }
 	
 };
+
+opm.Page = function (proto) {
+    
+    var cls = function () {
+        this.init.apply(this, arguments);
+    }
+
+    cls.prototype = {
+        container: null,
+        is_setup: false,
+        init: function () {},
+        setup: function () {},
+        enter: function () {}
+    }
+
+    $.extend(cls.prototype, proto);
+
+    return cls;
+}
+
+opm.Feed = opm.Page({
+    init: function() {
+        console.log('feed init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('feed setup');
+    },
+    
+    enter: function() {
+        console.log('feed enter');
+        opm.common.getMarkup('feed', {}, function(res){
+            $(this.container).html(res);
+        }.bindScope(this));
+    }
+});
+
+opm.EventDetail = opm.Page({
+    init: function() {
+        console.log('event detail init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('event detail setup');
+    },
+    
+    enter: function() {
+        console.log('event detail enter');
+    }
+});
+
+opm.Categories = opm.Page({
+    init: function() {
+        console.log('categories init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('categories setup');
+    },
+    
+    enter: function() {
+        console.log('categories enter');
+    }
+});
+
+
