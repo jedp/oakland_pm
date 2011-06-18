@@ -2,32 +2,42 @@
     <head>
         <title>Oakland:PM</title>
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+        <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/style.less">
         <script src="{{ STATIC_URL }}js/headjs/dist/head.min.js"></script>
     </head>
     <body role="page">
-
         <div class="content">
             {% block content %}
             {% endblock %}
+            {% block footer_nav %}
+				<ul class="nav nav-bottom cf">
+					<li>Feed</li>
+					<li>Search</li>
+					<li>Friends</li>
+					<li>Messages</li>
+					<li>...</li>
+				</ul>	
+			{% endblock %}
         </div>
-
         <script>
             head.js(
               {jquery:     "http://code.jquery.com/jquery-1.5.2.min.js"},
               {underscore: "{{ STATIC_URL }}js/underscore/underscore.js"},
               {backbone:   "{{ STATIC_URL }}js/backbone/backbone.js"},
+              {oaklandpm:  "http://lesscss.googlecode.com/files/less-1.1.3.min.js"},
+              {oaklandpm:  "http://use.typekit.com/clx5ygc.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/utils.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"}
             );
 
             head.ready(function() {
+            	try{Typekit.load();}catch(e){}
                 opm.options = {
                 };
                 opm.opmc = new opm.OaklandPm(opm.options);
             });
                     
         </script>
-
     </body>
 </html>
