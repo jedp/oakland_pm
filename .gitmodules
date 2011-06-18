@@ -7,3 +7,6 @@
 [submodule "static/js/underscore"]
     path = static/js/underscore
     url = https://github.com/documentcloud/underscore/
+[submodule "django_social_auth"]
+	path = django_social_auth
+	url = git://github.com/omab/django-social-auth.git
