@@ -7,8 +7,13 @@
     </head>
     <body role="page">
         <div class="content">
+        	{% block masthead %}
+        	<div class="masthead">
+				<h1>oakland.pm</h1>
+			</div>
+			{% endblock masthead %}
             {% block content %}
-            {% endblock %}
+            {% endblock content %}
             {% block bottom_nav %}
 			<ul class="nav nav-bottom cf">
 				<li>Feed</li>
@@ -17,7 +22,7 @@
 				<li>Messages</li>
 				<li>...</li>
 			</ul>	
-			{% endblock %}
+			{% endblock bottom_nav %}
         </div>
         <script>
             head.js(
@@ -30,7 +35,6 @@
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"}
             );
-
             head.ready(function() {
             	try{Typekit.load();}catch(e){}
                 opm.options = {
