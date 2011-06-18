@@ -291,7 +291,7 @@ body {
     border-style:solid none;
     border-width:1em 0 1px 0;
     margin:1em 0 2em 0;
-    padding:1em 0 .75em 0;
+    padding:2em 0 1.75em 0;
     
     h3 {
         margin:0;
@@ -319,9 +319,8 @@ body {
     margin:0 .25em 0 0;
     padding:.15em .65em;
     border-radius:5px;
-    background:rgb(100,100,100);
-    background:rgba(100,100,100,.6);
-    text-shadow:rgba(220,220,220,1);
+    background:rgb(0,0,0);
+    color:@papercolor;
 }
 .nav li:last-child {
     margin:0;
@@ -471,6 +470,8 @@ body {
     h4 {
         text-transform:uppercase;
         letter-spacing:.25em;
+        font-family:"proxima-nova-1","proxima-nova-2";
+        font-weight:600;
     }
 
 
@@ -487,6 +488,28 @@ body {
 
     }
 
+    .numeral {
+        display:inline-block;
+        color:#fff;
+        height:10em;
+        width:10em;
+        border-radius:5em;
+        background:rgb(0,0,0);
+        text-align:center;
+        position:relative;
+        
+        span {
+            width:2em;
+            height:2em;
+            margin:-.825em 0 0 -1em;
+            top:50%;
+            left:50%;
+            position:absolute;
+            font-size:8em;
+            color:@papercolor;
+    
+        }
+    }
 
 }
 
