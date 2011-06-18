@@ -14,8 +14,8 @@ django-debug-toolbar==0.8.1
 django-extensions==0.4.1
 django-coverage==1.2
 python-openid>=1.2.0
-python-oauth2
-BeautifulSoup
+python-oauth2==1.5.170
+BeautifulSoup==3.2.0
 
 
 # Libraries ---------------------------------
