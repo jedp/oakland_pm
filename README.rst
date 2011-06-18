@@ -55,14 +55,14 @@ have to create a source dir, `cd` to it, and do: ::
     git clone git://github.com/openid/python-openid.git
     cd python-openid
     python setup.py build
-    sudo python setup.py install
+    sudo python setup.py install --prefix=$VIRTUAL_ENV
 
     cd ..  # back to your src dir
 
     git clone git://github.com/simplegeo/python-oauth2.git
     cd python-oauth2
     python setup.py build
-    sudo python setup.py install
+    sudo python setup.py install --prefix=$VIRTUAL_ENV
 
 Recommended
 '''''''''''

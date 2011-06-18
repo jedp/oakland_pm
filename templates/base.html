@@ -6,24 +6,25 @@
         <script src="{{ STATIC_URL }}js/headjs/dist/head.min.js"></script>
     </head>
     <body role="page">
+		{% block masthead %}
+    	<div class="masthead">
+			<h1>oakland.pm</h1>
+		</div>
+		{% endblock masthead %}
         <div class="content">
-        	{% block masthead %}
-        	<div class="masthead">
-				<h1>oakland.pm</h1>
-			</div>
-			{% endblock masthead %}
             {% block content %}
             {% endblock content %}
-            {% block bottom_nav %}
-			<ul class="nav nav-bottom cf">
-				<li><a href="javascript:void(0);" rel="feed">Feed</a></li>
-				<li><a href="javascript:void(0);" rel="search">Search</a></li>
-				<li><a href="javascript:void(0);" rel="friends">Friends</a></li>
-				<li><a href="javascript:void(0);" rel="messages">Messages</a></li>
-			</ul>	
-			{% endblock bottom_nav %}
         </div>
+		{% block bottom_nav %}
+		<ul class="nav nav-bottom cf">
+			<li><a href="javascript:void(0);" rel="feed">Feed</a></li>
+			<li><a href="javascript:void(0);" rel="search">Search</a></li>
+			<li><a href="javascript:void(0);" rel="friends">Friends</a></li>
+			<li><a href="javascript:void(0);" rel="messages">Messages</a></li>
+		</ul>	
+		{% endblock bottom_nav %}
         <script>
+            var csrf_token = "{{ c.csrf_token }}";
             head.js(
               {jquery:     "http://code.jquery.com/jquery-1.5.2.min.js"},
               {less:       "{{ STATIC_URL }}js/less-1.1.3.min.js"},
@@ -40,7 +41,6 @@
                 };
                 opm.opmc = new opm.OaklandPm(opm.options);
             });
-                    
         </script>
     </body>
 </html>
