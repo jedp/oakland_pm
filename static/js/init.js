@@ -15,7 +15,7 @@ var opm = {
 opm.constants.CONTENT_CONTAINER = $('div.content');
 
 // define api environment
-opm.constants.API_BASE_URL = '/';
+opm.constants.API_BASE_URL = '/xhr/';
 
 // define common functions
 opm.common.getMarkup = function (path, params, callback) {
@@ -28,6 +28,14 @@ opm.common.getMarkup = function (path, params, callback) {
            callback(res.responseText);
         }
     });
+}
+
+opm.common.initLinks = function(){
+	$('a').live('click', function(e){
+		e.preventDefault();
+		var url = $(this).attr('href').replace(/\//g, '');
+		opm.pages.select(url);
+	});
 }
 
 // fix csrf token thing
