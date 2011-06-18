@@ -1,11 +1,11 @@
 [submodule "static/js/headjs"]
-    path = static/js/headjs
+    path = static/js/third_party/headjs
     url = https://github.com/headjs/headjs.git
 [submodule "static/js/backbone"]
-    path = static/js/backbone
+    path = static/js/third_party/backbone
     url = https://github.com/documentcloud/backbone/
 [submodule "static/js/underscore"]
-    path = static/js/underscore
+    path = static/js/third_party/underscore
     url = https://github.com/documentcloud/underscore/
 [submodule "django_social_auth"]
 	path = django_social_auth
