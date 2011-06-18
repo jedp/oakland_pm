@@ -13,11 +13,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
+    # social auth
+    url(r'', include('social_auth.urls')),
+
     url('^$', 'oakland_pm.web.views.home', name='home'),
 )
 
-
 urlpatterns += staticfiles_urlpatterns()
 
-
-print staticfiles_urlpatterns()
