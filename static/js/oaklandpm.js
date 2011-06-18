@@ -1,4 +1,3 @@
-
 /*
  * OaklandPm Class
  * Main JS controller
@@ -171,14 +170,18 @@ opm.Draw = function(what, container){
     		console.log("ERROR: NO DRAWING TYPE SPECIFIED!");
     		break;
     }
-    
 }
 opm.Draw.prototype = {
-	
 	drawCheck : function(container){
 		var parent = this;
 		var paper = Raphael(container, 50, 50);
-		var rectangle = paper.rect(0, 25, 25, 25);
+		
+		var st = paper.set();
+		st.push(
+    		paper.rect(0, 25, 25, 25)
+    		// paper.circle(30, 10, 5)
+		);
+		st.attr({fill: "red"});
 	},
 }
 

@@ -15,15 +15,19 @@ var opm = {
 opm.constants.CONTENT_CONTAINER = $('div.content');
 
 // define api environment
-opm.constants.API_BASE_URL = '/api/';
+opm.constants.API_BASE_URL = '/';
 
 // define common functions
-opm.common.apicall = function (path, params, callback) {
-    $.postJSON([opm.constants.API_BASE_URL, path].join(''), params, callback);
-}
-
-opm.common.getmarkup = function (path, params, callback) {
-    
+opm.common.getMarkup = function (path, params, callback) {
+    $.ajax({
+        url: [opm.constants.API_BASE_URL, path, '/'].join(''),
+        type: 'POST',
+        dataType: 'html',
+        data: params,
+        complete: function(res, textStatus) {
+           callback(res.responseText);
+        }
+    });
 }
 
 // fix csrf token thing
