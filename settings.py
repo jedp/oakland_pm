@@ -9,9 +9,15 @@ import sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+COMPRESS = True
+
 PROJECT_ROOT = path.abspath(path.dirname(__file__))
 
-sys.path.append(path.join(PROJECT_ROOT, 'django_social_auth'))
+for vendor_path in [
+        'django_social_auth',
+        'django_css'
+        ]:
+    sys.path.append(path.join(PROJECT_ROOT, vendor_path))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -114,6 +120,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.CacheMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -185,7 +192,27 @@ FACEBOOK_APP_ID = '180519672002663'
 FACEBOOK_API_SECRET = None  # configure in settings_local
 
 # ----------------------------------------------------------------------
+# cacheing
 #
+# This is for dev.
+# For production, use memcached or redis or something real
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        
+    }
+}
+
+
+# ----------------------------------------------------------------------
+# lesscss
+
+COMPILER_FORMATS = {
+    '.less': {
+        'binary_path': path.join(PROJECT_ROOT, 'less_js/bin/lessc')
+    }
+}
 
 ROOT_URLCONF = 'oakland_pm.urls'
 
@@ -210,6 +237,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'social_auth',
+    'compressor',
 
     'core',
     'web',
