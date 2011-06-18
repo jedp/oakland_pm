@@ -101,7 +101,11 @@ opm.OaklandPm.prototype = {
     },
     
     handleFeed: function() {
-        
+      	$('li.attending').each(function(index){
+    		// console.log("this : "+ this);
+    		// console.log("opm.Draw : "+ opm.Draw);
+    		new opm.Draw("check", this);
+    	});  
     },
     
     handleEventDetail: function() {
@@ -111,4 +115,81 @@ opm.OaklandPm.prototype = {
     handleCategories: function() {
         
     }
+
 }
+
+/*
+opm.Page = function (proto) {
+    
+    var cls = function () {
+        this.init.apply(this, arguments);
+    }
+
+    cls.prototype = {
+        container: null,
+        is_setup: false,
+        init: function () {},
+        setup: function () {},
+        enter: function () {}
+    }
+
+    $.extend(cls.prototype, proto);
+
+    return cls;
+}
+
+opm.Feed = opm.Page({
+    init: function() {
+        
+    },
+    
+    setup: function() {
+        
+    },
+    
+    enter: function() {
+        
+    }
+});
+*/
+
+opm.Draw = function(what, container){
+	this.elms = {
+        "container" : container
+    };
+    this.vars = {
+        "what" : what
+    };
+    
+    switch(what){
+    	case "check":
+    		this.drawCheck(this.elms.container);
+    		break;
+    	case "circle":
+    		break;
+    	default:
+    		console.log("ERROR: NO DRAWING TYPE SPECIFIED!");
+    		break;
+    }
+    
+}
+opm.Draw.prototype = {
+	
+	drawCheck : function(container){
+		var parent = this;
+		var paper = Raphael(container, 50, 50);
+		var rectangle = paper.rect(0, 25, 25, 25);
+	},
+}
+
+
+
+
+
+
+
+
+
+
+
+
