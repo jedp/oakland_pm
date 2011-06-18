@@ -178,7 +178,6 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
 }
 a:focus {
 	outline: thin dotted;
@@ -271,7 +270,7 @@ sub {
 
 @papercolor: rgb(240,240,210);
 @papercolor2: desaturate(darken(@papercolor, 10%), 10%);
-
+@orangelink: rgb(170,140,75);
 
 body {
 	width: 92%;
@@ -279,6 +278,14 @@ body {
 	background:@papercolor;
     text-align:center;
 }
+
+a {
+    color:@orangelink;    
+}
+a:hover {
+    color:darken(@orangelink, 20%);    
+}
+
 
 .page {
     text-align:left;
@@ -326,6 +333,12 @@ body {
     margin:0;
 }
 
+.nav a { 
+    color:@papercolor;
+}
+.nav a:hover { 
+    color:darken(@papercolor, 20%);
+}
 
 
 /*EVENT*/
@@ -359,31 +372,20 @@ body {
             height:6em;
         }
         .distance {
-            background:url('../img/icon-map.png') no-repeat center 1em;
+            background:url('../img/icon-pin.png') no-repeat center 1em;
             border-right:1px solid rgb(0,0,0);
 
         }
         .time-until {
-            background:url('../img/icon-clock.png') no-repeat center 1em;
+            background:url('../img/icon-calendar.png') no-repeat center 1em;
             border-right:1px solid rgb(0,0,0);
         }
         .attending {
-            background:url('../img/icon-check.png') no-repeat center 1em;
+            background:url('../img/icon-grad.png') no-repeat center 1em;
             border-right:1px solid rgb(0,0,0);
         }
         .headcount {
-            position:relative;
-            span {
-                position:absolute;
-                top:.5em;
-                width:6em;
-                margin-left:-3em;
-                left:50%;
-                display:block;
-                font-size:4em;
-                font-weight:700;
-                font-style:normal;
-            }
+            background:url('../img/icon-people.png') no-repeat center 1em;
         }
 
     }
@@ -531,7 +533,7 @@ body {
 
 /*my notes*/
 
-#event-detail:before {
+/*#event-detail:before {
     content:'NOTE: EVENT DETAIL PAGE';
     display:block;
     color:red;
@@ -547,7 +549,7 @@ body {
     display:block;
     color:red;
 }
-
+*/
 
 /* `Wide mobile devices styles
 ---------------------------------------- */
