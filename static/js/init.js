@@ -22,6 +22,10 @@ opm.common.apicall = function (path, params, callback) {
     $.postJSON([opm.constants.API_BASE_URL, path].join(''), params, callback);
 }
 
+opm.common.getmarkup = function (path, params, callback) {
+    
+}
+
 // fix csrf token thing
 $.ajaxSetup({ 
      beforeSend: function(xhr, settings) {

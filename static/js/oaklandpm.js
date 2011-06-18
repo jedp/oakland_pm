@@ -82,7 +82,7 @@ opm.OaklandPm.prototype = {
             data: params,
             complete: function(res, textStatus) {
                 $(this.elms.container).append(res.responseText);
-                if (!this.vars.is_setup) {
+                if (this.vars.is_setup) {
                     $(this.vars.current_page).fadeOut('fast', function() {
                         var next_page = $(this.vars.current_page).next('.page');
                         $(next_page).fadeIn('slow');
@@ -91,8 +91,10 @@ opm.OaklandPm.prototype = {
                     }.bindScope(this));
                 }
                 else {
+                    this.vars.is_setup = true;
                     this.vars.current_page = $('#feed');
                     $(this.vars.current_page).show();
+                    this.setupPage('feed');
                 }
             }.bindScope(this)
         });

@@ -23,11 +23,11 @@ opm.Feed = opm.Page({
     },
     
     setup: function() {
-        
+        console.log('setup');
     },
     
     enter: function() {
-        
+        console.log('enter');
     }
 });
 
