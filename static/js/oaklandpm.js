@@ -15,7 +15,7 @@ opm.OaklandPm = function (options) {
     $.extend(this.options, options);
     
     this.elms = {
-        'container': $('#container')
+        'container': $('.content')
     }
     
     this.vars = {
