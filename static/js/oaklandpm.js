@@ -175,7 +175,7 @@ opm.Draw = function(what, container){
 }
 opm.Draw.prototype = {
 	
-	drawCheck = function(container){
+	drawCheck : function(container){
 		var parent = this;
 		var paper = Raphael($(container), 100, 100);
 		var rectangle = paper.rect(10, 10, 50, 50);
