@@ -3,12 +3,6 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 
-def debug(request):
-    print request
-    return render_to_response(
-            'debug.html', 
-            {'request':str(request)})
-
 def home(request):
     c = get_csrf(request)    
     return render_to_response(
