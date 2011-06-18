@@ -34,13 +34,22 @@
               {oaklandpm:  "http://use.typekit.com/clx5ygc.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/utils.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},
-              {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"}
+              {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"},
+			  {oaklandpm:  "{{ STATIC_URL }}js/Page.js"}
             );
             head.ready(function() {
             	try{Typekit.load();}catch(e){}
-                opm.options = {
+                
+				opm.options = {
                 };
                 opm.opmc = new opm.OaklandPm(opm.options);
+				
+				/*
+				$.extend(opm.pages, {
+		        	feed: new opm.Feed
+		        });
+				opm.pages.select('feed');
+				*/
             });
         </script>
     </body>

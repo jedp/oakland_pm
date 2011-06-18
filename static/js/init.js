@@ -11,12 +11,19 @@ var opm = {
     'common': {}
 };
 
+// define content container
+opm.constants.CONTENT_CONTAINER = $('div.content');
+
 // define api environment
 opm.constants.API_BASE_URL = '/api/';
 
 // define common functions
 opm.common.apicall = function (path, params, callback) {
     $.postJSON([opm.constants.API_BASE_URL, path].join(''), params, callback);
+}
+
+opm.common.getmarkup = function (path, params, callback) {
+    
 }
 
 // fix csrf token thing

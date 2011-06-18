@@ -1,3 +1,4 @@
+from settings import _HAVE_SOCIAL_AUTH
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -13,9 +14,6 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    # social auth
-    url(r'', include('social_auth.urls')),
-
     url('^logged-in/$', 'oakland_pm.web.views.home'),
     url('^debug/$', 'oakland_pm.web.views.debug'),
 
@@ -26,6 +24,12 @@ urlpatterns = patterns('',
     url('^event/', 'oakland_pm.web.views.event'),
     url('^base/', 'oakland_pm.web.views.base'),    
 )
+
+if _HAVE_SOCIAL_AUTH:
+    urlpatterns += patterns('',
+        url(r'', include('social_auth.urls')),
+    )
+
 
 urlpatterns += staticfiles_urlpatterns()
 
