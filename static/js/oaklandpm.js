@@ -16,7 +16,7 @@ opm.OaklandPm = function (options) {
     
     this.elms = {
         'container': $('.content')
-    }
+    };
     
     this.vars = {
         'current_page': $('#home')
