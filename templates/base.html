@@ -1,14 +1,15 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Oakland:PM</title>
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/style.less">
         <script src="{{ STATIC_URL }}js/headjs/dist/head.min.js"></script>
     </head>
     <body role="page">
 		{% block masthead %}
     	<div class="masthead">
-			<h1>oakland.pm</h1>
+			<h3>oakland.pm</h3>
 		</div>
 		{% endblock masthead %}
         <div class="content">
@@ -30,22 +31,27 @@
               {less:       "{{ STATIC_URL }}js/less-1.1.3.min.js"},
               {underscore: "{{ STATIC_URL }}js/underscore/underscore.js"},
               {backbone:   "{{ STATIC_URL }}js/backbone/backbone.js"},
+              {raphael:     "{{ STATIC_URL }}js/raphael-min.js"},
               {oaklandpm:  "http://use.typekit.com/clx5ygc.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/utils.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},
-              {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"}
+              {oaklandpm:  "{{ STATIC_URL }}js/oaklandpm.js"},
+			  {oaklandpm:  "{{ STATIC_URL }}js/Page.js"}
             );
             head.ready(function() {
             	try{Typekit.load();}catch(e){}
-                opm.options = {
+            	/*
+				opm.options = {
                 };
                 opm.opmc = new opm.OaklandPm(opm.options);
-				/*
+				*/
 				$.extend(opm.pages, {
-		        	feed: new opm.Feed
+		        	feed: new opm.Feed,
+					event_detail: new opm.EventDetail,
+					categories: new opm.Categories
 		        });
 				opm.pages.select('feed');
-				*/
+				
             });
         </script>
     </body>

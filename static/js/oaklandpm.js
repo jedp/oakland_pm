@@ -1,4 +1,3 @@
-
 /*
  * OaklandPm Class
  * Main JS controller
@@ -82,7 +81,7 @@ opm.OaklandPm.prototype = {
             data: params,
             complete: function(res, textStatus) {
                 $(this.elms.container).append(res.responseText);
-                if (!this.vars.is_setup) {
+                if (this.vars.is_setup) {
                     $(this.vars.current_page).fadeOut('fast', function() {
                         var next_page = $(this.vars.current_page).next('.page');
                         $(next_page).fadeIn('slow');
@@ -91,15 +90,19 @@ opm.OaklandPm.prototype = {
                     }.bindScope(this));
                 }
                 else {
+                    this.vars.is_setup = true;
                     this.vars.current_page = $('#feed');
                     $(this.vars.current_page).show();
+                    this.setupPage('feed');
                 }
             }.bindScope(this)
         });
     },
     
     handleFeed: function() {
-        
+      	$('li.attending').each(function(index){
+    		new opm.Draw("check", this);
+    	});  
     },
     
     handleEventDetail: function() {
@@ -109,4 +112,85 @@ opm.OaklandPm.prototype = {
     handleCategories: function() {
         
     }
+
 }
+
+/*
+opm.Page = function (proto) {
+    
+    var cls = function () {
+        this.init.apply(this, arguments);
+    }
+
+    cls.prototype = {
+        container: null,
+        is_setup: false,
+        init: function () {},
+        setup: function () {},
+        enter: function () {}
+    }
+
+    $.extend(cls.prototype, proto);
+
+    return cls;
+}
+
+opm.Feed = opm.Page({
+    init: function() {
+        
+    },
+    
+    setup: function() {
+        
+    },
+    
+    enter: function() {
+        
+    }
+});
+*/
+
+opm.Draw = function(what, container){
+	this.elms = {
+        "container" : container
+    };
+    this.vars = {
+        "what" : what
+    };
+    
+    switch(what){
+    	case "check":
+    		this.drawCheck(this.elms.container);
+    		break;
+    	case "circle":
+    		break;
+    	default:
+    		console.log("ERROR: NO DRAWING TYPE SPECIFIED!");
+    		break;
+    }
+}
+opm.Draw.prototype = {
+	drawCheck : function(container){
+		var parent = this;
+		var paper = Raphael(container, 50, 50);
+		
+		var st = paper.set();
+		st.push(
+    		paper.rect(0, 25, 25, 25)
+    		// paper.circle(30, 10, 5)
+		);
+		st.attr({fill: "red"});
+	},
+}
+
+
+
+
+
+
+
+
+
+
+
+

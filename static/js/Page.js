@@ -1,3 +1,10 @@
+/*
+ * OaklandPm Page Class
+ * Main JS controller
+ * Also, black border?  Adonis DNA.
+ * @author cyap
+ */
+
 opm.Page = function (proto) {
     
     var cls = function () {
@@ -17,20 +24,67 @@ opm.Page = function (proto) {
     return cls;
 }
 
+/* BEGIN PAGE DEFINITIONS */
+
 opm.Feed = opm.Page({
     init: function() {
+        console.log('feed init');
         this.container = E('div');
     },
     
     setup: function() {
-        
+        console.log('feed setup');
     },
     
     enter: function() {
-        
+        console.log('feed enter');
+        opm.common.getMarkup('feed', {}, function(res){
+            $(this.container).html(res);
+            
+        	$(this.container).find('li.attending').each(function(index){
+	    		new opm.Draw("check", this);
+    		});
+        }.bindScope(this));
     }
 });
 
+opm.EventDetail = opm.Page({
+    init: function() {
+        console.log('event detail init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('event detail setup');
+    },
+    
+    enter: function() {
+        console.log('event detail enter');
+        opm.common.getMarkup('event', {}, function(res){
+            $(this.container).html(res);
+        }.bindScope(this));
+    }
+});
+
+opm.Categories = opm.Page({
+    init: function() {
+        console.log('categories init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('categories setup');
+    },
+    
+    enter: function() {
+        console.log('categories enter');
+        opm.common.getMarkup('categories', {}, function(res){
+            $(this.container).html(res);
+        }.bindScope(this));
+    }
+});
+
+/* END PAGE DEFINITIONS */
 
 opm.pages = {
     _current: null,
