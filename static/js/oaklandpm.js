@@ -14,6 +14,10 @@ opm.OaklandPm = function (options) {
     };
     $.extend(this.options, options);
     
+    this.elms = {
+        'container': $('.content')
+    };
+    
     this.vars = {
         'current_page': $('#home')
     };
@@ -37,13 +41,23 @@ opm.OaklandPm.prototype = {
         this[method_name]();
     },
     
-    handlePageTransition: function(destination) {
-        $(this.vars.current_page).fadeOut('fast', function() {
-            var next_page = $(this.vars.current_page).next('li.page');
-            $(next_page).fadeIn('slow');
-            window.scroll(0,0);
-            this.setupPage($(next_page).attr('id'));
-        }.bindScope(this));
+    handlePageTransition: function(next_page_id, params) {
+        $.ajax({
+            url: next_page_id,
+            type: 'POST',
+            dataType: 'html',
+            data: params,
+            complete: function(res, textStatus) {
+                $(this.elms.container).append(res);
+                $(this.vars.current_page).fadeOut('fast', function() {
+                    var next_page = $(this.vars.current_page).next('.page');
+                    $(next_page).fadeIn('slow');
+                    $(this.vars.current_page).remove();
+                    this.setupPage($(next_page).attr('id'));
+                }.bindScope(this));
+            }.bindScope(this)
+        });
+        
     },
     
     handleHome: function() {
