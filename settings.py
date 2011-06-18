@@ -208,6 +208,10 @@ TEST_RUNNER = 'django_coverage.coverage_runner.CoverageRunner'
 # ----------------------------------------------------------------------
 # settings_auth
 # Includes facebook auth, etc.
+#
+# It's laborious and pointless for dev collaborators to get this set up,
+# because you can't easily use facebook auth on localhost anyway, so make
+# the entire social auth system optional.
 
 try:
     import social_auth
@@ -216,8 +220,11 @@ try:
 except ImportError:
     print >> sys.stderr, "It's ok for dev - but I can't include social_auth"
 
-
+# ----------------------------------------------------------------------
+# Custom settings
+#
 # use settings_local.py to customize your site
+
 try:
     from settings_local import *
 except ImportError:
