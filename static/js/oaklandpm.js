@@ -110,38 +110,3 @@ opm.OaklandPm.prototype = {
         
     }
 }
-
-/*
-opm.Page = function (proto) {
-    
-    var cls = function () {
-        this.init.apply(this, arguments);
-    }
-
-    cls.prototype = {
-        container: null,
-        is_setup: false,
-        init: function () {},
-        setup: function () {},
-        enter: function () {}
-    }
-
-    $.extend(cls.prototype, proto);
-
-    return cls;
-}
-
-opm.Feed = opm.Page({
-    init: function() {
-        
-    },
-    
-    setup: function() {
-        
-    },
-    
-    enter: function() {
-        
-    }
-});
-*/
