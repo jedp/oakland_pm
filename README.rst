@@ -49,6 +49,21 @@ Required
 - `sudo pip install Mercurial`
 - Add in bash `source /usr/local/bin/virtualenvwrapper.sh`
 
+I can't get **oauth2** and **python-openid** to install via `pip`.  So you may
+have to create a source dir, `cd` to it, and do: ::
+
+    git clone git://github.com/openid/python-openid.git
+    cd python-openid
+    python setup.py build
+    sudo python setup.py install
+
+    cd ..  # back to your src dir
+
+    git clone git://github.com/simplegeo/python-oauth2.git
+    cd python-oauth2
+    python setup.py build
+    sudo python setup.py install
+
 Recommended
 '''''''''''
 
