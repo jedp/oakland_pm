@@ -10,3 +10,9 @@
 [submodule "django_social_auth"]
 	path = django_social_auth
 	url = git://github.com/omab/django-social-auth.git
+[submodule "django_css"]
+	path = django_css
+	url = git://github.com/dziegler/django-css.git
+[submodule "less_js"]
+	path = less_js
+	url = git://github.com/cloudhead/less.js.git
