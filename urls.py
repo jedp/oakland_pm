@@ -1,3 +1,4 @@
+from settings import _HAVE_SOCIAL_AUTH
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
