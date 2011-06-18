@@ -1,0 +1,35 @@
+<div id="categories" class="page categories">
+	<ul class="list list-categories cf">
+		{#{% for category in categories %}#}
+		<li>Visual Art</li>
+		<li>Music</li>
+		<li>Dance</li>
+		<li class="selected">Sports</li>
+		<li>Academics</li>
+		<li>Theater</li>
+		<li>Cooking</li>
+		<li>Makers</li>
+		{#{% endfor %}#}
+	</ul>
+	{#{% if tags %}#}
+	<ul class="list list-tags cf">
+		{#{% for tag in tags %}#}
+		<li>Baseball</li>
+		<li>Basketball</li>
+		<li>Soccer</li>
+		<li>Chess</li>
+		<li class="selected">Snooker</li>
+		<li>Jai-alai</li>
+		<li>Billiard</li>
+		<li>Swimming</li>
+		<li>Rock climbing</li>
+		<li>Bicycling</li>
+		<li>Parcour</li>
+		<li>Skateboarding</li>
+		<li>Rollerskating</li>
+		<li>Martial Arts</li>
+		<li>Bowling</li>
+		{#{% endfor %}#}
+	</ul>
+	{#{% endif %}#}
+</div>
