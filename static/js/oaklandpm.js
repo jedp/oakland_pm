@@ -101,11 +101,11 @@ opm.OaklandPm.prototype = {
     },
     
     handleFeed: function() {
-    	console.log("skfgaslkdfhg");
-      	// $('li.attending').each(function(index){
-    		// console.log("skfgaslkdfhg");
-    		// var test = new Draw("check", $(this));
-    	// });  
+      	$('li.attending').each(function(index){
+    		// console.log("this : "+ this);
+    		// console.log("opm.Draw : "+ opm.Draw);
+    		new opm.Draw("check", this);
+    	});  
     },
     
     handleEventDetail: function() {
@@ -155,7 +155,7 @@ opm.Feed = opm.Page({
 
 opm.Draw = function(what, container){
 	this.elms = {
-        "container" : $(container)
+        "container" : container
     };
     this.vars = {
         "what" : what
@@ -177,8 +177,8 @@ opm.Draw.prototype = {
 	
 	drawCheck : function(container){
 		var parent = this;
-		var paper = Raphael($(container), 100, 100);
-		var rectangle = paper.rect(10, 10, 50, 50);
+		var paper = Raphael(container, 50, 50);
+		var rectangle = paper.rect(0, 25, 25, 25);
 	},
 }
 
