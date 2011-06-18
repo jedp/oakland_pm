@@ -1,6 +1,8 @@
 
 {% block content %}
 <div id="categories" class="page categories">
+	<div class="numeral"><span>1</span></div>	
+	<h4>Choose category</h4>
 	<ul class="list list-categories cf">
 		{#{% for category in categories %}#}
 		<li>Visual Art</li>
@@ -13,7 +15,10 @@
 		<li>Makers</li>
 		{#{% endfor %}#}
 	</ul>
+	
 	{#{% if tags %}#}
+	<div class="numeral"><span>2</span></div>	
+	<h4>Choose type</h4>
 	<ul class="list list-tags cf">
 		{#{% for tag in tags %}#}
 		<li>Baseball</li>
@@ -33,6 +38,18 @@
 		<li>Bowling</li>
 		{#{% endfor %}#}
 	</ul>
+	{#{% endif %}#}
+	
+	{#{% if tables %}#}
+	<div class="numeral"><span>3</span></div>	
+	<h4>Choose event</h4>
+	{#{% for table in tables %}#}
+	<ul class="list-table cf">
+		<li class="title">Hockey and Snooker Class</li>
+		<li class="distance">Distance 2.2mi</li>
+		<li class="time-until">Event in 3 days</li>
+	</ul>
+	{#{% endfor %}#}
 	{#{% endif %}#}
 </div>
 {% endblock %}
