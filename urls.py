@@ -22,7 +22,6 @@ urlpatterns = patterns('',
     url('^feed/', 'oakland_pm.web.views.feed'),
     url('^categories/', 'oakland_pm.web.views.categories'),
     url('^event/', 'oakland_pm.web.views.event'),
-    url('^base/', 'oakland_pm.web.views.base'),    
 )
 
 if _HAVE_SOCIAL_AUTH:

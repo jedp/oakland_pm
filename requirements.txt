@@ -14,6 +14,7 @@ django-debug-toolbar==0.8.1
 django-extensions==0.4.1
 django-coverage==1.2
 BeautifulSoup==3.2.0
+django-countries==1.0.2
 
 # Libraries ---------------------------------
 ipython==0.10

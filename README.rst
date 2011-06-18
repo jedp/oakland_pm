@@ -2,13 +2,13 @@
 Oakland:PM
 ==========
 
-A mobile application for connecting with after-school enrichment programs
+A web-based application for connecting youth with after-school enrichment programs
 
 What We Are Building
 --------------------
 
-We propose to develop a web-based, mobile application that connects Oakland
-youth to after-school programs and enrichment opportunities.
+We propose to develop a versatile, web-based application also accessible via mobile devices 
+that connects Oakland youth to after-school programs and enrichment opportunities via .
 
 Oakland offers many opportunities for after-school enrichment, but there is
 presently no on-line method for students to discover them according to their
@@ -42,12 +42,12 @@ Set-up
 
 Required
 ''''''''
-- [Source]()
+- [Source- Read-only](https://github.com/jedp/oakland_pm.git)
 - (Mac) Xcode >= 3.2
 - `sudo pip install -U virtualenv`
 - `sudo pip install -U virtualenvwrapper`
 - `sudo pip install Mercurial`
-- Add in bash `source /usr/local/bin/virtualenvwrapper.sh`
+- Add in bash: `source /usr/local/bin/virtualenvwrapper.sh`
 
 You don't need these for dev, but the live server requires:
 
