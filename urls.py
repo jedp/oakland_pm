@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'', include('social_auth.urls')),
 
     url('^logged-in/$', 'oakland_pm.web.views.home'),
+    url('^debug/$', 'oakland_pm.web.views.debug'),
 
     url('^$', 'oakland_pm.web.views.home', name='home'),
 )

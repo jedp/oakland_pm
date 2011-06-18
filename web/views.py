@@ -10,3 +10,9 @@ def home(request):
             context_instance=RequestContext(request))
 
 
+def debug(request):
+    print request
+    return render_to_response(
+            'debug.html', 
+            {'request':str(request)})
+
