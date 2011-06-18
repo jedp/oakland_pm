@@ -161,6 +161,7 @@ TEMPLATE_DIRS = (
     path.join(path.dirname(__file__), 'templates')
 )
 
+# this is a list, not a tuple, because we may extend it below
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -172,7 +173,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'compressor',
+    #'compressor',
 
     'core',
     'web',

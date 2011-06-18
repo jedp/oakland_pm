@@ -1,14 +1,14 @@
+{% extends "base.html" %}
+{% load display_lists %}
+
 {% block content %}
+
 <div id="feed" class="page">
-	{#{% for event in events %}#}
-	<div class="event" data-meta='{"id": "23"}'>
-		<h1 class="title">After school dance class</h1>
-		<ul class="details cf">
-			<li class="distance">Distance 2.2mi</li>
-			<li class="time-until">Event in 3 days</li>
-			<li class="attending">Yes, I'm attending</li>
-			<li class="headcount">23 total students</li>
-		</ul><!-- end list details -->
-	</div><!-- end events -->
-	{#{% endfor %}#}
+	{% for event in events %}
+
+        {% list_event event %}
+
+	{% endfor %}
+</div>
+
 {% endblock %}

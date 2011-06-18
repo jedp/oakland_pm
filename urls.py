@@ -16,19 +16,25 @@ urlpatterns = patterns('',
 
     url('^logged-in/$', 'oakland_pm.web.views.home'),
     url('^debug/$', 'oakland_pm.web.views.debug'),
+)
 
-    # Old School POSTS
-    url('^$', 'oakland_pm.web.views.home', name='home'),
-    url('^home/', 'oakland_pm.web.views.home', name='home'),
-    url('^feed/', 'oakland_pm.web.views.feed'),
-    url('^categories/', 'oakland_pm.web.views.categories'),
-    url('^event/', 'oakland_pm.web.views.event'),
+urlpatterns += patterns('oakland_pm.web.views',
+    url('^$', 'feed', name='home'),
+    url('^feed/', 'feed'),
+    url('^search/', 'search'),
+    url('^friends/', 'friends'),
+    url('^messages/', 'messages'),
+    url('^categories/', 'categories'),
+    url('^event/(?P<event_id>\d+)/', 'event'),
 
+
+)
+
+urlpatterns += patterns('oakland_pm.web.xhr',
     # XHR Requests
-    url('^xhr/logged-in/$', 'oakland_pm.web.xhr.home'),
-    url('^xhr/feed/', 'oakland_pm.web.xhr.feed'),    
-    url('^xhr/categories/', 'oakland_pm.web.xhr.categories'),
-    url('^xhr/event/', 'oakland_pm.web.xhr.event'),    
+    url('^xhr/feed/', 'feed'),
+    url('^xhr/categories/', 'categories'),
+    url('^xhr/event/(?P<event_id>\d+)/', 'event'),
 )
 
 if _HAVE_SOCIAL_AUTH:
