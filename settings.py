@@ -213,12 +213,14 @@ TEST_RUNNER = 'django_coverage.coverage_runner.CoverageRunner'
 # because you can't easily use facebook auth on localhost anyway, so make
 # the entire social auth system optional.
 
+_HAVE_SOCIAL_AUTH = False
 try:
     import openid
     import oauth2
     import social_auth
     from settings_auth import *
     INSTALLED_APPS.append('social_auth')
+    _HAVE_SOCIAL_AUTH = True
 except ImportError:
     print >> sys.stderr, "It's ok for dev - but I can't include social_auth"
 
