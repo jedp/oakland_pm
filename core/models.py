@@ -28,7 +28,6 @@ from django.contrib.contenttypes import generic
 # School (FK)
 
 
-
 # Wait list
 # ----
 # Program (FK)
@@ -40,6 +39,7 @@ from django.contrib.contenttypes import generic
 # ----
 # Student (FK)
 # Program (FK)
+
 
 # Program
 # ----
@@ -122,11 +122,10 @@ class BartStop(models.Model):
     name = models.TextField()
     location = models.ForeignKey('Location')
 
-
 class PhoneField(models.CharField): pass
 class EventDate(models.Model):
     """
-    Can this be replaced with a django scheduler?
+    Can this be replaced with a django scheduler?    
     """
     date = models.DateTimeField()
 
@@ -179,7 +178,6 @@ class Location(models.Model):
     longitude = models.FloatField(null=True)
 
 
-
 class Address(models.Model):
     name = models.TextField()
     street = models.TextField()
@@ -210,6 +208,40 @@ class Program(models.Model):
     """
     A single program for a single age group.
     """
+    # lat
+    # long
+    # name
+    # summary
+    # description
+    # status (approved, pending verfication,denied,)
+    # is_active
+    # start_date
+    # end_date
+    # start_time
+    # end_time
+    # frequecny
+    # logo image
+    # url
+    # phone
+    # fax
+    # ttd
+    # address 1
+    # address 2
+    # city
+    # state
+    # country (django-countries)
+    # zip
+    # type (FK? dropin signup)
+    # notes
+    # register instructions
+    # minage
+    # maxage
+    # rank
+    # capacity
+    # last mod date
+    # created date
+    
+    
     about = models.TextField()
     organization = models.ForeignKey(Organization)
     contacts = models.ManyToManyField(Contact, null=True)

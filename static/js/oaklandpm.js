@@ -101,8 +101,6 @@ opm.OaklandPm.prototype = {
     
     handleFeed: function() {
       	$('li.attending').each(function(index){
-    		// console.log("this : "+ this);
-    		// console.log("opm.Draw : "+ opm.Draw);
     		new opm.Draw("check", this);
     	});  
     },
