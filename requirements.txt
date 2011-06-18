@@ -15,6 +15,7 @@ django-extensions==0.4.1
 django-coverage==1.2
 python-openid>=1.2.0
 python-oauth2
+BeautifulSoup
 
 
 # Libraries ---------------------------------
