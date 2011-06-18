@@ -11,7 +11,7 @@ def debug(request):
 
 def home(request):
     return render_to_response(
-            'feed.html', 
+            'base.html', 
             {},
             context_instance=RequestContext(request))
     
