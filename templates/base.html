@@ -39,15 +39,18 @@
             );
             head.ready(function() {
             	try{Typekit.load();}catch(e){}
+            	/*
 				opm.options = {
                 };
                 opm.opmc = new opm.OaklandPm(opm.options);
-				/*
+				*/
 				$.extend(opm.pages, {
-		        	feed: new opm.Feed
+		        	feed: new opm.Feed,
+					event_detail: new opm.EventDetail,
+					categories: new opm.Categories
 		        });
 				opm.pages.select('feed');
-				*/
+				
             });
         </script>
     </body>
