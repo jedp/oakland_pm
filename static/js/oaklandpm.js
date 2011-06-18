@@ -41,12 +41,12 @@ opm.OaklandPm.prototype = {
         this[method_name]();
     },
     
-    handlePageTransition: function(next_page_id) {
+    handlePageTransition: function(next_page_id, params) {
         $.ajax({
             url: next_page_id,
-            type: 'GET',
+            type: 'POST',
             dataType: 'html',
-            data: {},
+            data: params,
             complete: function(res, textStatus) {
                 $(this.elms.container).append(res);
                 $(this.vars.current_page).fadeOut('fast', function() {
