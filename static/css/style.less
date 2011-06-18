@@ -39,7 +39,7 @@ p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldse
 /* `Headings and small
 ---------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 300;
+	font-weight: 100;
 }
 h1 {
 	font-size: 4.25em; /* 68px */
@@ -271,12 +271,16 @@ body {
 	width: 92%;
 	margin: 0 auto;
 	background:rgb(240,240,210);
+    text-align:center;
 }
 
 .page {
-    text-align:center;
     padding:2em;
+    text-align:left;
 }
+
+
+
 .nav {
     display:inline-block;
 }
@@ -298,8 +302,60 @@ body {
 /*event*/
 
 
-.event ul {
+.event {
+    border-style:dashed none;
+    border-width:1px;
+    border-color:rgb(0,0,0);
+    margin:0 0 1em 0;
+    padding:1em 0;
     
+    .title {
+        font-size:2em;
+    }
+
+    ul {
+
+    }
+
+    li {
+        float:right;
+        margin:0 1em 0 0;
+    }
+
+}
+
+.event-detail {
+    h1.title {
+        font-weight:300;
+    }
+    .banner {
+        background:rgba(0,0,0,.2);
+        border:1px solid rgba(0,0,0,.2);
+        width:100%;
+        height:300px;
+        margin:0 0 1em 0;
+        padding:1em;
+    }
+}
+
+
+/*my notes*/
+
+#event-detail:before {
+    content:'NOTE: EVENT DETAIL PAGE';
+    display:block;
+    color:red;
+}
+
+#feed:before {
+    content:'NOTE: FEED PAGE';
+    display:block;
+    color:red;
+}
+#categories:before {
+    content:'NOTE: CATEGORIES PAGE';
+    display:block;
+    color:red;
 }
 
 
