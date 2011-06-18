@@ -8,7 +8,7 @@ What We Are Building
 --------------------
 
 We propose to develop a versatile, web-based application also accessible via mobile devices 
-that connects Oakland youth to after-school programs and enrichment opportunities via .
+that connects Oakland youth to after-school programs and enrichment opportunities.
 
 Oakland offers many opportunities for after-school enrichment, but there is
 presently no on-line method for students to discover them according to their
