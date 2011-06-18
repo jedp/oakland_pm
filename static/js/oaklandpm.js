@@ -15,18 +15,28 @@ opm.OaklandPm = function (options) {
     $.extend(this.options, options);
     
     this.elms = {
-        'container': $('.content')
+        'container': $('.content'),
+        'nav': $('.nav')
     };
     
     this.vars = {
-        'current_page': $('#home')
+        'current_page': $('#feed')
     };
     
-    this.setupPage('home');
-    
+    this.initNav();
+    this.setupPage('feed');
+    $(this.vars.current_page).show();
 }
 
 opm.OaklandPm.prototype = {
+    initNav: function() {
+        $(this.elms.nav).find('li').each(function(i, item) {
+            $(item).click(function() {
+                this.handlePageTransition($(item).attr('rel'), {});
+            }.bindScope(this));
+        }.bindScope(this));
+    },
+    
     setupPage: function(page_id) {
         this.vars.current_page = $(['#', page_id].join(''));
         var page_id_split = page_id.split("-");
@@ -57,10 +67,17 @@ opm.OaklandPm.prototype = {
                 }.bindScope(this));
             }.bindScope(this)
         });
+    },
+    
+    handleFeed: function() {
         
     },
     
-    handleHome: function() {
+    handleEventDetail: function() {
+        
+    },
+    
+    handleCategories: function() {
         
     }
 }
