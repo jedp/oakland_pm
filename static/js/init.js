@@ -11,6 +11,9 @@ var opm = {
     'common': {}
 };
 
+// define content container
+opm.constants.CONTENT_CONTAINER = $('div.content');
+
 // define api environment
 opm.constants.API_BASE_URL = '/api/';
 
