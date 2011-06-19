@@ -185,6 +185,12 @@ class Program(models.Model):
     # logo = models.ImageField()
     # attending = models.ForeignKey(User)
 
+    def next_event(self):
+        try:
+            return self.events.order_by('date')[0]
+        except:
+            return None
+
     def __unicode__(self):
         return self.name
  

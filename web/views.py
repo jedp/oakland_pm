@@ -1,4 +1,5 @@
 import settings
+import datetime
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
@@ -17,8 +18,12 @@ def home(request):
             context_instance=RequestContext(request))
     
 def feed(request):
+    """
+    Show upcoming events
+    """ 
+    programs = Program.objects.order_by('events__date')[:40]
     return render_to_response('feed.html', 
-            {'events': ['foo'],
+            {'programs': programs,
              'c': get_csrf(request)},
             context_instance=RequestContext(request))
 

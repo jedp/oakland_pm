@@ -183,10 +183,10 @@ def bootstrap_events():
     # let's have each event occur once between 3 and 6 pm, 
     # some day in the next month, and then recur for the next 1 to 8 weeks
 
-    start_hour = random.randint(15, 18)
-    now = datetime.datetime.now()
+    now = datetime.datetime.now().replace(minute=0, second=0)
 
     for program in Program.objects.all():
+        start_hour = random.randint(15, 18)
         the_date = now.replace(hour=start_hour) + datetime.timedelta(random.randint(0, 31))
         duration = random.randint(1,6) * 30
         next_week = datetime.timedelta(7)
@@ -201,7 +201,7 @@ def bootstrap_events():
                 date = the_date,
                 duration_mins = duration))
 
-    print "Scheduled", event.dates.count(), "events for", project
+        print "Scheduled", program.events.count(), "events for", program
 
 def main():
     bootstrap_schools()
