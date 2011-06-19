@@ -3,7 +3,7 @@
  * This class is a simple named cache manager intended to cleanly
  * enable various objects to communicate with each other.
  *
- * @author Chris Yap
+ * @author cyap
  */
 opm.Cache = function() {
 	this.cache = {
