@@ -171,9 +171,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    #'compressor',
     'django.contrib.localflavor',
-    
+    #'compressor',
+
     'core',
     'web',
     'sms',
