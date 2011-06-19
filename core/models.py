@@ -40,6 +40,9 @@ class School(models.Model):
     address = models.ForeignKey('Address', null=True)    
     contact = models.ForeignKey('Contact', null=True)
     district = models.PositiveIntegerField(null=True)
+
+    def __unicode__(self):
+        return self.name
  
 class Address(models.Model):
     street1 = models.TextField()
