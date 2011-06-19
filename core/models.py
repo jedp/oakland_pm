@@ -48,7 +48,6 @@ class Address(models.Model):
     state = USStateField(choices=STATE_CHOICES)
     country = CountryField()
     zipcode = USPostalCodeField()
-    district = models.PositiveIntegerField(null=True) # prepopulated?
     location = models.ForeignKey('GIS')
 
 class GIS(models.Model):
