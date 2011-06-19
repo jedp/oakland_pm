@@ -27,9 +27,9 @@ def bootstrap_schools():
                     contact=contact,
                     address=address)
 
-            print "Imported:", school
+            print "Imported school:", school
                         
-def bootstrap_programs():
+def bootstrap_organizations():
     reader = csv.DictReader(open('data/programs.csv'))
     for program in reader:
         # the stars data is seriously broken
@@ -71,11 +71,67 @@ def bootstrap_programs():
             else:
                 organization, _ = Organization.objects.get_or_create(
                         name = name,
-                        headoffice = address)
+                        headoffice = address,
+                        contact=contact)
 
-            organization.contacts.add(contact)
-            organization.save()
+            print "Imported org:", organization
+                    
+def bootstrap_categories():
+    for category in [
+            'Art',
+            'Music',
+            'Dance',
+            'Sports',
+            'Cooking',
+            'Theater',
+            'Photography',
+            'Film',
+            'Woodworking',
+            'Metalsmithing',
+            'Math', 
+            'Science', 
+            'Literature',
+            'Writing',
+            ]:
+        print "Instaling category:", category
+        Category.objects.get_or_create(name=category)
 
+def bootstrap_programs():
+    import re
+    program_block = re.compile("""
+        ^
+        ([A-Z].*?[A-Z]$)    # All-caps heading, w/ punct maybe
+        (?:[\n]*)
+        (\w.*?$)            # description
+        (?:[\n]*)
+        (?:.*?:\s+)
+        (.*?)               # Address
+        \s+Age.*            # ignore age
+        (?:[\n]+)
+        Strategy.*?$        # ignore stragety type
+        (?:[\s]*)""",
+        re.MULTILINE | re.VERBOSE)
 
+    programs = open('data/ofcy.txt').read()
 
+    for match in program_block.finditer(programs):
+        title, summary, street = match.groups()
 
+        # this won't get words in parens, but whatever
+        title = ' '.join(
+                map( lambda word: word.capitalize(), 
+                    title.split()))
+
+        address, _ = Address.objects.get_or_create(
+                street1 = street ) 
+        Program.objects.get_or_create(
+                name = title,
+                summary = summary,
+                address = address)
+        print "Imported program:",  title
+
+def main():
+    bootstrap_schools()
+    bootstrap_organizations()
+    bootstrap_categories()
+    bootstrap_programs()

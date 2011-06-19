@@ -21,8 +21,8 @@ class Profile(models.Model):
         todo: Selection should eventually be intelligent based on location
     """
     user = models.ForeignKey(User, unique=True, verbose_name='user')
-    school = models.ForeignKey('School', null=True)
-    watch_list = models.ForeignKey('WatchList', null=True, related_name="profile_watch_list")
+    school = models.ForeignKey('School', blank=True, null=True)
+    watch_list = models.ForeignKey('WatchList', blank=True, null=True, related_name="profile_watch_list")
 
     # class Meta:
     #      verbose_name_plural = 'Profiles'
@@ -36,25 +36,25 @@ class Profile(models.Model):
     #      return ('view_forum_category', (self.forum.slug, self.slug,))    
      
 class School(models.Model):
-    name = models.CharField(max_length=40, unique=True)
-    address = models.ForeignKey('Address', null=True)    
-    contact = models.ForeignKey('Contact', null=True)
-    district = models.PositiveIntegerField(null=True)
+    name = models.CharField(max_length=200, unique=True)
+    address = models.ForeignKey('Address', blank=True, null=True)    
+    contact = models.ForeignKey('Contact', blank=True, null=True)
+    district = models.PositiveIntegerField(blank=True, null=True)
 
     def __unicode__(self):
         return self.name
  
 class Address(models.Model):
-    street1 = models.TextField()
-    street2 = models.TextField(null=True)
-    city = models.TextField(default='Oakland')
-    state = USStateField(choices=STATE_CHOICES, default='CA', null=True)
-    country = CountryField(null=True, default='United States')
-    zipcode = USPostalCodeField(null=True)
+    street1 = models.CharField(max_length=250)
+    street2 = models.CharField(max_length=250, blank=True, null=True)
+    city = models.CharField(max_length=100, default='Oakland')
+    state = USStateField(choices=STATE_CHOICES, default='CA', blank=True, null=True)
+    country = CountryField(blank=True, null=True, default='US')
+    zipcode = USPostalCodeField(blank=True, null=True)
 
     # GIS is computed as a post-save process, so must
     # be able to be null on first save
-    location = models.ForeignKey('GIS', null=True)
+    location = models.ForeignKey('GIS', blank=True, null=True)
 
     def __unicode__(self):
         return self.street1
@@ -64,8 +64,8 @@ class GIS(models.Model):
     GIS location data for events, schools,
     bus stops, and bart stops
     """
-    latitude = models.FloatField(null=True)
-    longitude = models.FloatField(null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
  
  
 class EventDate(models.Model):
@@ -82,15 +82,15 @@ class Contact(models.Model):
     """
     Contact info for projects and events
     """
-    first_name = models.CharField(max_length=20, null=True)
-    last_name = models.CharField(max_length=20, null=True)
-    role = models.TextField(null=True)
-    phone = PhoneNumberField(null=True)
+    first_name = models.CharField(max_length=40, blank=True, null=True)
+    last_name = models.CharField(max_length=40, blank=True, null=True)
+    role = models.CharField(max_length=200, blank=True, null=True)
+    phone = PhoneNumberField(blank=True, null=True)
     smsok = models.BooleanField(default=False)
-    tdd = PhoneNumberField(max_length=20, null=True)
-    fax = PhoneNumberField(max_length=20, null=True)
-    email = models.EmailField(null=True)
-    web = models.URLField(null=True)
+    tdd = PhoneNumberField(max_length=20, blank=True, null=True)
+    fax = PhoneNumberField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    web = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         if self.email:
@@ -106,19 +106,16 @@ class Category(models.Model):
     """
     Moderated set of categories for events
     """
-    name = models.TextField(unique=True)
-    color = models.TextField(max_length=11, null=True)
+    name = models.CharField(max_length=60, unique=True)
 
     def __unicode__(self):
         return self.name
  
-class SubCategory(models.Model):
+class Tag(models.Model):
     """
     Moderated set of subcats for events
     """
-    name = models.TextField(unique=True)
-    category = models.ForeignKey('Category')
-    color = models.TextField(max_length=11, null=True)
+    name = models.CharField(max_length=60, unique=True)
  
     def __unicode__(self):
         return self.name
@@ -127,11 +124,10 @@ class Organization(models.Model):
     """
     An organization that offers Programs
     """
-    name = models.TextField(unique=True)
-    about = models.TextField(null=True)
+    name = models.CharField(max_length=250, unique=True)
+    about = models.TextField(blank=True, null=True)
     headoffice = models.ForeignKey('Address', related_name='office')
-    otherlocations = models.ManyToManyField('Address', related_name='locations')
-    contacts = models.ManyToManyField('Contact')
+    contact = models.ForeignKey('Contact')
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)    
 
@@ -144,14 +140,14 @@ class Program(models.Model):
     """
  
     # Core Details
-    name = models.CharField(max_length=20, null=True)
-    summaary = models.TextField(max_length=140, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    summary = models.TextField(blank=True, null=True)
     about = models.TextField()
-    organization = models.ForeignKey('Organization', null=True)
+    organization = models.ForeignKey('Organization', blank=True, null=True)
     address = models.ForeignKey('Address')
      
-    notes = models.TextField(null=True)
-    primary_contact = models.ForeignKey('Contact')
+    notes = models.TextField(blank=True, null=True)
+    primary_contact = models.ForeignKey('Contact', null=True)
  
     # Time
     dates = models.ManyToManyField('EventDate')
@@ -160,37 +156,43 @@ class Program(models.Model):
     cost = models.FloatField(default=0.00)
     agemin = models.PositiveIntegerField(default=13)
     agemax = models.PositiveIntegerField(default=18)
-    registration_needed = models.BooleanField(default=False)
-    registration_due_by = models.DateTimeField() # validate required if reg_needed
-    registration_instructions = models.TextField(null=True)
+    registration_needed = models.BooleanField(blank=True, default=False)
+    # validate required if reg_needed
+    registration_due_by = models.DateTimeField(blank=True, null=True) 
+    registration_instructions = models.TextField(blank=True, null=True)
          
     # Organization
-    category = models.ForeignKey('Category')
-    sub_category = models.ForeignKey('SubCategory')
+    category = models.ManyToManyField('Category')
+    tag = models.ManyToManyField('Tag')
     # todo: make subcat intelligent based on cat selected
  
     # Meta
     is_active = models.BooleanField(default=False)
-    program_status = models.ForeignKey('ProgramStatus') # eg pending approval, approved, denied, need verifications, etc.
-    program_type = models.ForeignKey('ProgramType') # eg drop-in, register
+
+    program_status = models.ForeignKey('ProgramStatus', null=True) # eg pending approval, approved, denied, need verifications, etc.
+    program_type = models.ForeignKey('ProgramType', null=True) # eg drop-in, register
+
     rank = models.IntegerField(default=-1)
-    capcity = models.PositiveIntegerField() # who's going, how many total can attend
-    wait_list = models.ForeignKey('WaitList', null=True, related_name="program_wait_list")
+    capcity = models.PositiveIntegerField(null=True) # who's going, how many total can attend
+    wait_list = models.ForeignKey('WaitList', blank=True, null=True, related_name="program_wait_list")
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
          
     # holding
     # logo = models.ImageField()
     # attending = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.name
  
  
 class ProgramStatus(models.Model):
-    program_status = models.TextField(max_length=20)
-    description = models.TextField(null=True)
+    program_status = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
  
 class ProgramType(models.Model):
-    program_type = models.TextField(max_length=20)
-    description = models.TextField(null=True)
+    program_type = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
  
 class WatchList(models.Model):
     profile = models.ForeignKey('Profile', related_name="watchlist_profile")
@@ -216,8 +218,8 @@ class PublicTransport(models.Model):
         ('LR', 'Light Rail'),
     )
      
-    company = models.TextField()
-    line = models.TextField(max_length=40)
+    company = models.CharField(max_length=100)
+    line = models.CharField(max_length=40)
     name = models.CharField(max_length=40)
     address = models.ForeignKey('Address')
     pt_type = models.CharField(max_length=10, choices=TRANSPORT_CHOICES)

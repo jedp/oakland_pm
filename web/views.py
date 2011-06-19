@@ -1,7 +1,9 @@
 import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.template.loader import render_to_string
 from django.core.context_processors import csrf
+from core.models import Event
 
 def get_csrf(request):
     c = {}
@@ -35,8 +37,10 @@ def messages(request):
             context_instance=RequestContext(request))
 
 def event(request, event_id):
+    program = Program.objects.get(id=event_id)
+    #eventData = render_to_string('my_template.html', { 'foo': 'bar' })
     return render_to_response('event.html', 
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request), "program":program},
             context_instance=RequestContext(request))
 
 def categories(request):
