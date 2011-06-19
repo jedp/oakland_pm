@@ -15,7 +15,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url('^logged-in/$', 'oakland_pm.web.views.home'),
-    url('^debug/$', 'oakland_pm.web.views.debug'),
 )
 
 urlpatterns += patterns('oakland_pm.web.views',
