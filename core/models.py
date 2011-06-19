@@ -45,9 +45,9 @@ class School(models.Model):
         return self.name
  
 class Address(models.Model):
-    street1 = models.TextField()
-    street2 = models.TextField(blank=True, null=True)
-    city = models.TextField(default='Oakland')
+    street1 = models.CharField(max_length=250)
+    street2 = models.CharField(max_length=250, blank=True, null=True)
+    city = models.CharField(max_length=100, default='Oakland')
     state = USStateField(choices=STATE_CHOICES, default='CA', blank=True, null=True)
     country = CountryField(blank=True, null=True, default='US')
     zipcode = USPostalCodeField(blank=True, null=True)
@@ -84,7 +84,7 @@ class Contact(models.Model):
     """
     first_name = models.CharField(max_length=40, blank=True, null=True)
     last_name = models.CharField(max_length=40, blank=True, null=True)
-    role = models.TextField(blank=True, null=True)
+    role = models.CharField(max_length=200, blank=True, null=True)
     phone = PhoneNumberField(blank=True, null=True)
     smsok = models.BooleanField(default=False)
     tdd = PhoneNumberField(max_length=20, blank=True, null=True)
@@ -106,7 +106,7 @@ class Category(models.Model):
     """
     Moderated set of categories for events
     """
-    name = models.TextField(unique=True)
+    name = models.CharField(max_length=60, unique=True)
 
     def __unicode__(self):
         return self.name
@@ -115,7 +115,7 @@ class Tag(models.Model):
     """
     Moderated set of subcats for events
     """
-    name = models.TextField(unique=True)
+    name = models.CharField(max_length=60, unique=True)
  
     def __unicode__(self):
         return self.name
@@ -124,7 +124,7 @@ class Organization(models.Model):
     """
     An organization that offers Programs
     """
-    name = models.TextField(unique=True)
+    name = models.CharField(max_length=250, unique=True)
     about = models.TextField(blank=True, null=True)
     headoffice = models.ForeignKey('Address', related_name='office')
     contact = models.ForeignKey('Contact')
@@ -184,16 +184,14 @@ class Program(models.Model):
 
     def __unicode__(self):
         return self.name
-        
-    
  
  
 class ProgramStatus(models.Model):
-    program_status = models.TextField(max_length=20)
+    program_status = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
  
 class ProgramType(models.Model):
-    program_type = models.TextField(max_length=20)
+    program_type = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
  
 class WatchList(models.Model):
@@ -220,8 +218,8 @@ class PublicTransport(models.Model):
         ('LR', 'Light Rail'),
     )
      
-    company = models.TextField()
-    line = models.TextField(max_length=40)
+    company = models.CharField(max_length=100)
+    line = models.CharField(max_length=40)
     name = models.CharField(max_length=40)
     address = models.ForeignKey('Address')
     pt_type = models.CharField(max_length=10, choices=TRANSPORT_CHOICES)
