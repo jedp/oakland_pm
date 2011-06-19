@@ -56,6 +56,9 @@ class Address(models.Model):
     # be able to be null on first save
     location = models.ForeignKey('GIS', null=True)
 
+    def __unicode__(self):
+        return self.street1
+
 class GIS(models.Model):
     """
     GIS location data for events, schools,
@@ -70,7 +73,9 @@ class EventDate(models.Model):
     Can this be replaced with a django scheduler?    
     """
     date = models.DateTimeField()
- 
+
+    def __unicode__(self):
+        return self.date.isoformat()
       
 class Contact(models.Model):
     """
@@ -85,6 +90,14 @@ class Contact(models.Model):
     fax = PhoneNumberField(max_length=20, null=True)
     email = models.EmailField(null=True)
     web = models.URLField(null=True)
+
+    def __unicode__(self):
+        if self.email:
+            return self.email
+        if self.phone:
+            return self.phone
+        if self.web:
+            return self.web
  
 class Category(models.Model):
     """
@@ -92,6 +105,9 @@ class Category(models.Model):
     """
     name = models.TextField(unique=True)
     color = models.TextField(max_length=11, null=True)
+
+    def __unicode__(self):
+        return self.name
  
 class SubCategory(models.Model):
     """
@@ -101,6 +117,8 @@ class SubCategory(models.Model):
     category = models.ForeignKey('Category')
     color = models.TextField(max_length=11, null=True)
  
+    def __unicode__(self):
+        return self.name
  
 class Organization(models.Model):
     """
@@ -113,6 +131,9 @@ class Organization(models.Model):
     contacts = models.ManyToManyField('Contact')
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)    
+
+    def __unicode__(self):
+        return self.name
  
 class Program(models.Model):
     """
