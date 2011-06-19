@@ -7,9 +7,9 @@
 	<ul class="list list-categories cf">
 		{% for category in categories %}
             {% if category.pk == selected.pk %}
-                <li class='selected'><a href='/category/{{ category.name }}/">{{ category.name }}</a></li>
+                <li class='selected'><a href="/category/{{ category.name }}/">{{ category.name }}</a></li>
             {% else %}
-                <li><a href='/category/{{ category.name }}/">{{ category.name }}</a></li>
+                <li><a href="/category/{{ category.name }}/">{{ category.name }}</a></li>
             {% endif  %}
 		{% endfor %}
 	</ul>
