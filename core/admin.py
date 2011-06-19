@@ -42,7 +42,7 @@ class ContactAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     pass
 
-class SubCategoryAdmin(admin.ModelAdmin):
+class TagAdmin(admin.ModelAdmin):
     pass
 
 class OrganizationAdmin(admin.ModelAdmin):
@@ -73,7 +73,7 @@ admin.site.register(GIS, GISAdmin)
 admin.site.register(EventDate, EventDateAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(SubCategory, SubCategoryAdmin)
+admin.site.register(Tag, TagAdmin)
 admin.site.register(Organization, OrganizationAdmin)
 admin.site.register(Program, ProgramAdmin)
 admin.site.register(ProgramStatus, ProgramStatusAdmin)
