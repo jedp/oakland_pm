@@ -34,6 +34,6 @@ def categories(request):
 def about(request):
     c = get_csrf(request)    
     return render_to_response(
-            'about_xhr.html', 
+            'about.html', 
             {"c":c},
             context_instance=RequestContext(request))
