@@ -38,6 +38,7 @@ class Profile(models.Model):
 class School(models.Model):
     name = models.CharField(max_length=40, unique=True)
     address = models.ForeignKey('Address', null=True)    
+    contact = models.ForeignKey('Contact', null=True)
     district = models.PositiveIntegerField(null=True)
  
 class Address(models.Model):
@@ -47,7 +48,10 @@ class Address(models.Model):
     state = USStateField(choices=STATE_CHOICES, default='CA', null=True)
     country = CountryField(null=True)
     zipcode = USPostalCodeField(null=True)
-    location = models.ForeignKey('GIS')
+
+    # GIS is computed as a post-save process, so must
+    # be able to be null on first save
+    location = models.ForeignKey('GIS', null=True)
 
 class GIS(models.Model):
     """
@@ -69,13 +73,13 @@ class Contact(models.Model):
     """
     Contact info for projects and events
     """
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=20, null=True)
+    last_name = models.CharField(max_length=20, null=True)
     role = models.TextField(null=True)
     phone = PhoneNumberField(null=True)
-    smsok = models.BooleanField(default=False)
-    tdd = PhoneNumberField(max_length=20)
-    fax = PhoneNumberField(max_length=20)
+    smsok = models.BooleanField(default=False, null=True)
+    tdd = PhoneNumberField(max_length=20, null=True)
+    fax = PhoneNumberField(max_length=20, null=True)
     email = models.EmailField(null=True)
     web = models.URLField(null=True)
  
