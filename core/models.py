@@ -49,7 +49,7 @@ class Address(models.Model):
     street2 = models.TextField(null=True)
     city = models.TextField(default='Oakland')
     state = USStateField(choices=STATE_CHOICES, default='CA', null=True)
-    country = CountryField(null=True, default='United States')
+    country = CountryField(null=True, default='US')
     zipcode = USPostalCodeField(null=True)
 
     # GIS is computed as a post-save process, so must
