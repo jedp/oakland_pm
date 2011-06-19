@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Profile,School,Address,GIS,EventDate,Contact,Category,SubCategory,Organization,Program,ProgramStatus,ProgramType,WatchList,WaitList,PublicTransport
+from core.models import Profile,School,Address,GIS,EventDate,Contact,Category,Tag,Organization,Program,ProgramStatus,ProgramType,WatchList,WaitList,PublicTransport
 
 # class QuestionAnswerInline(admin.StackedInline):
 #     model = QuestionAnswer
