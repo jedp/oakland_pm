@@ -119,16 +119,14 @@ opm.pages = {
     select: function() {
 		
 		var hashPath = 	$.address.value().split("/")[1];
-    	console.log("hashPath :" + hashPath);
-    	
-    
 		var args = Array.create(arguments);
         var page_name = args.shift();
-        console.log("page_name :" + page_name);
+        var isInitial = args[1];
         
-        // if(hashPath && hashPath != "" && init){
-        	// page_name = hashPath;	
-        // }
+        if(hashPath && hashPath != "" && isInitial == true){
+        	page_name = hashPath;	
+        	args = [Number($.address.value().split("/")[2])];
+        }
         
         var page = opm.pages[page_name];
 
