@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-
+from django_countries import CountryField
+from django.contrib.localflavor.us.models import *
+from django.contrib.localflavor.us.us_states import STATE_CHOICES
+# https://docs.djangoproject.com/en/1.3/ref/contrib/localflavor/#united-states-of-america-us
 
 # TODO: django scheduler
 # TODO: 
@@ -35,51 +38,6 @@ from django.contrib.contenttypes import generic
 # position int, (auto inc)
 
 
-# Watch List
-# ----
-# Student (FK)
-# Program (FK)
-
-
-# Program
-# ----
-# Contact (M2M)
-# Category (FK)
-# lat
-# long
-# name
-# summary
-# description
-# status (approved, pending verfication,denied,)
-# is_active
-# start_date
-# end_date
-# start_time
-# end_time
-# frequecny
-# logo image
-# url
-# phone
-# fax
-# ttd
-# address 1
-# address 2
-# city
-# state
-# country (django-countries)
-# zip
-# type (FK? dropin signup)
-# notes
-# register instructions
-# minage
-# maxage
-# rank
-# capacity
-# last mod date
-# created date
-
-# Frequency
-# ----
 
 
 
@@ -110,66 +68,37 @@ from django.contrib.contenttypes import generic
 # Category (FK)
 
 
-# Generic Classes
-class BusStop(models.Model):
-    company = models.TextField()
-    line = models.TextField()
-    name = models.TextField()
-    location = models.ForeignKey('Location')
+# User model?
+# first name
+# last name
+# auth_mode (custom, facebook, tumblr?)
 
-class BartStop(models.Model):
-    line = models.TextField()
-    name = models.TextField()
-    location = models.ForeignKey('Location')
-
-class PhoneField(models.CharField): pass
-class EventDate(models.Model):
-    """
-    Can this be replaced with a django scheduler?    
-    """
-    date = models.DateTimeField()
-
-
-class School(models.Model):
-    name = models.TextField()
-    address = models.ForeignKey('Address')
-    location = models.ForeignKey('Location')
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    school = models.ForeignKey(School, null=True)
+    """
+        Profile extends Django User Model
+        todo: Selection should eventually be intelligent based on location
+    """
+    user = models.ForeignKey(User, unique=True, verbose_name='user')
+    school = models.ForeignKey('School', null=True)
+    watch_list = models.ForeignKey('WatchList', null=True)
+    
+class School(models.Model):
+    name = models.CharField(max_length=40, unqique=True)
+    address = models.ForeignKey('Address', null=True)    
 
-    # it would be interesting to track favorite addresses
-    # for students - esp those who are not in school - 
-    # so we could better notify them of things nearby
-     
-class Contact(models.Model):
-    """
-    Contact info for projects and events
-    """
-    fullname = models.TextField(null=True)
-    role = models.TextField(null=True)
-    phone = PhoneField(null=True, max_length=20)
-    smsok = models.BooleanField(default=False)
-    tdd = PhoneField(null=True, max_length=20)
-    fax = PhoneField(null=True, max_length=20)
-    email = models.EmailField(null=True)
-    web = models.URLField(null=True)
 
-class Category(models.Model):
-    """
-    Moderated set of categories for events
-    """
+class Address(models.Model):
     name = models.TextField(unique=True)
-
-class Tag(models.Model):
-    """
-    Moderated set of categories for events
-    """
-    name = models.TextField(unique=True)
-    category = models.ForeignKey(Category)
-
-class Location(models.Model):
+    street1 = models.TextField()
+    street2 = models.TextField(null=True)
+    city = models.TextField(default='Oakland')
+    state = USStateField(choices=STATE_CHOICES)
+    country = CountryField()
+    zipcode = USPostalCodeField()
+    district = models.PositiveIntegerField(null=True) # prepopulated?
+    location = models.ForeginKey('Location')
+class GIS(models.Model):
     """
     GIS location data for events, schools,
     bus stops, and bart stops
@@ -178,119 +107,162 @@ class Location(models.Model):
     longitude = models.FloatField(null=True)
 
 
-class Address(models.Model):
-    name = models.TextField()
-    street = models.TextField()
-    city = models.TextField(default='Oakland')
-    state = models.CharField(max_length=2, default='CA')
-    zipcode = models.PositiveIntegerField()
-    district = models.PositiveIntegerField()
 
-    # calculate on save
-    bus = models.ManyToManyField(BusStop, null=True)
-    bart = models.ManyToManyField(BartStop, null=True)
+class EventDate(models.Model):
+    """
+    Can this be replaced with a django scheduler?    
+    """
+    date = models.DateTimeField()
+
+     
+class Contact(models.Model):
+    """
+    Contact info for projects and events
+    """
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    role = models.TextField(null=True)
+    phone = PhoneNumberField(null=True)
+    smsok = models.BooleanField(default=False)
+    tdd = PhoneNumberField(max_length=20)
+    fax = PhoneNumberField(max_length=20)
+    email = models.EmailField(null=True)
+    web = models.URLField(null=True)
+
+class Category(models.Model):
+    """
+    Moderated set of categories for events
+    """
+    name = models.TextField(unique=True)
+    color = models.TextField(max_length=11, null=True)
+
+class SubCategory(models.Model):
+    """
+    Moderated set of subcats for events
+    """
+    name = models.TextField(unique=True)
+    category = models.ForeignKey('Category')
+    color = models.TextField(max_length=11, null=True)
+
 
 class Organization(models.Model):
     """
     An organization that offers Programs
     """
-    name = models.TextField()
-    about = models.TextField()
-    headoffice = models.ForeignKey(Location, related_name='office')
-    otherlocations = models.ManyToManyField(Location, related_name='locations')
-    contacts = models.ManyToManyField(Contact)
-
-    class Admin:
-        pass
-
+    name = models.TextField(unique=True)
+    about = models.TextField(null=True)
+    headoffice = models.ForeignKey('Address', related_name='office')
+    otherlocations = models.ManyToManyField('Address', related_name='locations')
+    contacts = models.ManyToManyField('Contact')
+    date_added = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)    
 
 class Program(models.Model):
     """
-    A single program for a single age group.
-    """
-    # lat
-    # long
-    # name
-    # summary
-    # description
-    # status (approved, pending verfication,denied,)
-    # is_active
-    # start_date
-    # end_date
-    # start_time
-    # end_time
-    # frequecny
-    # logo image
-    # url
-    # phone
-    # fax
-    # ttd
-    # address 1
-    # address 2
-    # city
-    # state
-    # country (django-countries)
-    # zip
-    # type (FK? dropin signup)
-    # notes
-    # register instructions
-    # minage
-    # maxage
-    # rank
-    # capacity
-    # last mod date
-    # created date
-    
-    
+     Program info
+    """"
+
+    # Core Details
+    name = models.CharField(max_length=20, null=True)
+    summaary = models.TextField(max_length=140, null=True)
     about = models.TextField()
-    organization = models.ForeignKey(Organization)
-    contacts = models.ManyToManyField(Contact, null=True)
+    organization = models.ForeignKey('Organization', null=True)
+    address = models.ForeignKey('Address')
     
-    # how much does it cost, and whom is it for
+    notes = models.DateTimeField(null=True)
+    primary_contact = models.ForeignKey('Contact')
+
+    # Time
+    start_date = models.ManyToManyField('EventDate')
+    end_date = models.ManyToManyField('EventDate')
+    frequency = models.CharField(max_length=20, null=True) # todo: make this better, scheduling app?
+
+    
+    # Attendee Details
     cost = models.FloatField(default=0.00)
     agemin = models.PositiveIntegerField(default=13)
     agemax = models.PositiveIntegerField(default=18)
-    
-    # who's going, how many total can attend
-    attending = models.ForeignKey(User)
-    totalseats = models.PositiveIntegerField()
-    
-    # the original datespec may be, e.g., 
-    # "Every Tuesday and Thursday from 4-5
-    # "for three weeks starting July 10"
-    
-    # We convert this to a list of dates
-    datespec = models.TextField()
-    dates = models.ManyToManyField(EventDate)
-    dropin = models.BooleanField(default=False)
-    
-    # If it's by application, when the application is due
-    byapplication = models.BooleanField(default=False)
-    applicationdate = models.DateTimeField(null=True)
-    tags = models.ManyToManyField(Tag)
-    
-    class Admin:
-        pass
+    registration_needed = models.BooleanField(default=False)
+    registration_due_by = models.DateTimeField() # validate required if reg_needed
+    registration_instructions = models.TextField(null=True)
+        
+    # Organization
+    category = models.ForeignKey('Category')
+    sub_category = models.ForeignKey('SubCategory')
+    # todo: make subcat intelligent based on cat selected
 
-class Comment(models.Model):
-    """
-    A comment left by a user on an event
-    """
-    user = models.ForeignKey(User)
-    program = models.ForeignKey(Program)
-    flagged = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_now_add=True)
-    text = models.CharField(max_length=140)
+    # Meta
+    is_active = models.BooleanField(default=False)
+    program_status = models.ForeignKey('ProgramStatus') # eg pending approval, approved, denied, need verifications, etc.
+    program_type = models.ForeignKey('ProgramTypes') # eg drop-in, register
+    rank = models.PositiveIntegerField(default=-1)
+    capcity = models.PositiveIntegerField() # who's going, how many total can attend
+    wait_list = models.ForeignKey('WaitList', null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+        
+    # holding
+    # logo = models.ImageField()
+    # attending = models.ForeignKey(User)
 
-    class Meta:
-        ordering = ["date"]
 
-    class Admin:
-        pass
+class ProgramStatus(models.Model):
+    program_status = models.TextField(max_length=20)
+    description = models.TextField(null=True)
 
-    def __unicode__(self):
-        return self.text
-
- 
- 
+class ProgramType(models.Model):
+    program_type = models.TextField(max_length=20)
+    description = models.TextField(null=True)
+   
+    
 # -- Hoilding ---
+# class Comment(models.Model):
+#     """
+#     A comment left by a user on an event
+#     """
+#     user = models.ForeignKey(User)
+#     program = models.ForeignKey(Program)
+#     flagged = models.BooleanField(default=False)
+#     date = models.DateTimeField(auto_now_add=True)
+#     text = models.CharField(max_length=140)
+# 
+#     class Meta:
+#         ordering = ["date"]
+# 
+#     class Admin:
+#         pass
+# 
+#     def __unicode__(self):
+#         return self.text
+
+
+
+class WatchList(models.Model):
+    profile = models.ForeignKey('Profile')
+    program = models.ForeignKey('Program')
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+class WaitList(models.Model):
+    profile = models.ForeignKey('Profile')
+    program = models.ForeignKey('Program')
+    date_added = models.DateTimeField(auto_now_add=True)
+    position = models.PositiveIntegerField()
+    
+    def save(self):
+        self.position += 1
+        super(WaitList,self).save()
+            
+class PublicTransport(models.Model):
+    ''' Pull data with APIs?'''
+    
+    TRANSPORT_CHOICES = (
+        ('B', 'Bus'),
+        ('T', 'Train'),
+        ('LR', 'Light Rail'),
+    )
+    
+    company = models.TextField()
+    line = models.TextField(max_length=40)
+    name = models.CharField(max_length=40)
+    address = models.ForeignKey('Address')
+    pt_type = models.CharField(max_length=10, choices=TRANSPORT_CHOICES)
