@@ -32,10 +32,11 @@
             var csrf_token = "{{ c.csrf_token }}";
             head.js(
               {jquery:     "http://code.jquery.com/jquery-1.5.2.min.js"},
+              {jQAddress: "{{ STATIC_URL }}js/jquery.address-1.4.min.js"},
               {less:       "{{ STATIC_URL }}js/third_party/less-1.1.3.min.js"},
               {underscore: "{{ STATIC_URL }}js/third_party/underscore/underscore.js"},
               {backbone:   "{{ STATIC_URL }}js/third_party/backbone/backbone.js"},
-              {raphael:    "{{ STATIC_URL }}js/third_party/raphael-min.js"},
+              //{raphael:    "{{ STATIC_URL }}js/third_party/raphael-min.js"},
               {oaklandpm:  "http://use.typekit.com/clx5ygc.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/utils.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},
