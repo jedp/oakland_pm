@@ -33,6 +33,7 @@ opm.common.getMarkup = function (path, params, callback) {
 opm.common.initLinks = function(){
 	$('a').live('click', function(e){
 		e.preventDefault();
+		window.scroll(0,0);
 		var args = $(this).attr('href').replace(/^\/|\/$/g, '').split('/');
 		var page_id = args[0];
 		if (args.length > 1) {
