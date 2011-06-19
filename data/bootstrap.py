@@ -32,6 +32,9 @@ def bootstrap_schools():
 def bootstrap_programs():
     reader = csv.DictReader(open('data/programs.csv'))
     for program in reader:
+        # the stars data is seriously broken
+        # there's all kinds of insanity and spammity in there
+        # trying to filter some basically usable stuff...
         if ( (program['program'].strip() != '') and
              (program['address'].strip() != '') and
              (program['ages'].find('18') > -1)):
