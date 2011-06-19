@@ -4,7 +4,7 @@
         <title>Oakland:PM</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/style.less">
-        <script src="{{ STATIC_URL }}js/headjs/dist/head.min.js"></script>
+        <script src="{{ STATIC_URL }}js/third_party/headjs/dist/head.min.js"></script>
     </head>
     <body role="page">
 		{% block masthead %}
@@ -20,10 +20,11 @@
 
 		{% block bottom_nav %}
 		<ul class="nav nav-bottom cf">
-			<li><a href="/feed">Feed</a></li>
-			<li><a href="/categories">Search</a></li>
-			<li>Friends</li>
-			<li>Messages</li>
+			<li><a href="/feed" rel="feed">Feed</a></li>
+			<li><a href="/categories" rel="search">Search</a></li>
+			<li><a href="/friends" rel="friends">Friends</a></li>
+			<li><a href="/messages" rel="messages">Messages</a></li>
+			<li><a href="/about" rel="about">About Us</a></li>
 		</ul>	
 		{% endblock bottom_nav %}
 
@@ -31,10 +32,10 @@
             var csrf_token = "{{ c.csrf_token }}";
             head.js(
               {jquery:     "http://code.jquery.com/jquery-1.5.2.min.js"},
-              {less:       "{{ STATIC_URL }}js/less-1.1.3.min.js"},
-              {underscore: "{{ STATIC_URL }}js/underscore/underscore.js"},
-              {backbone:   "{{ STATIC_URL }}js/backbone/backbone.js"},
-              {raphael:    "{{ STATIC_URL }}js/raphael-min.js"},
+              {less:       "{{ STATIC_URL }}js/third_party/less-1.1.3.min.js"},
+              {underscore: "{{ STATIC_URL }}js/third_party/underscore/underscore.js"},
+              {backbone:   "{{ STATIC_URL }}js/third_party/backbone/backbone.js"},
+              {raphael:    "{{ STATIC_URL }}js/third_party/raphael-min.js"},
               {oaklandpm:  "http://use.typekit.com/clx5ygc.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/utils.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},

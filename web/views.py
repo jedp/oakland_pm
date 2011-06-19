@@ -43,3 +43,8 @@ def categories(request):
     return render_to_response('categories.html', 
             {'c': get_csrf(request)},
             context_instance=RequestContext(request))
+    
+def about(request):
+    return render_to_response('about.html', 
+            {'c': get_csrf(request)},
+            context_instance=RequestContext(request))

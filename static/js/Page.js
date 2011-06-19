@@ -83,6 +83,24 @@ opm.Categories = opm.Page({
     }
 });
 
+opm.About = opm.Page({
+    init: function() {
+        console.log('about init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('about setup');
+    },
+    
+    enter: function() {
+        console.log('about enter');
+        opm.common.getMarkup('about', {}, function(res){
+            $(this.container).html(res);
+        }.bindScope(this));
+    }
+});
+
 /* END PAGE DEFINITIONS */
 
 opm.pages = {
@@ -118,3 +136,36 @@ opm.pages = {
     }
 	
 };
+
+opm.Draw = function(what, container){
+	this.elms = {
+        "container" : container
+    };
+    this.vars = {
+        "what" : what
+    };
+    
+    switch(what){
+    	case "check":
+    		this.drawCheck(this.elms.container);
+    		break;
+    	case "circle":
+    		break;
+    	default:
+    		console.log("ERROR: NO DRAWING TYPE SPECIFIED!");
+    		break;
+    }
+}
+opm.Draw.prototype = {
+	drawCheck : function(container){
+		var parent = this;
+		var paper = Raphael(container, 50, 50);
+		
+		var st = paper.set();
+		st.push(
+    		paper.rect(0, 25, 25, 25)
+    		// paper.circle(30, 10, 5)
+		);
+		st.attr({fill: "red"});
+	},
+}

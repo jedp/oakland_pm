@@ -27,8 +27,13 @@ def event(request, event_id):
 def categories(request):
     c = get_csrf(request)    
     return render_to_response(
-            'list_events.html', 
+            'list_categories.html', 
             {"c":c},
             context_instance=RequestContext(request))
 
-
+def about(request):
+    c = get_csrf(request)    
+    return render_to_response(
+            'about.html', 
+            {"c":c},
+            context_instance=RequestContext(request))

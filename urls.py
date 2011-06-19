@@ -25,6 +25,7 @@ urlpatterns += patterns('oakland_pm.web.views',
     url('^friends/', 'friends'),
     url('^messages/', 'messages'),
     url('^categories/', 'categories'),
+    url('^about/', 'about'),
     url('^event/(?P<event_id>\d+)/', 'event'),
 
 
@@ -33,6 +34,7 @@ urlpatterns += patterns('oakland_pm.web.views',
 urlpatterns += patterns('oakland_pm.web.xhr',
     # XHR Requests
     url('^xhr/feed/', 'feed'),
+    url('^xhr/about/', 'about'),
     url('^xhr/categories/', 'categories'),
     url('^xhr/event/(?P<event_id>\d+)/', 'event'),
 )
