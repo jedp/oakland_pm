@@ -1,11 +1,12 @@
-# from django.contrib import admin
-# from .models import FAQ, QuestionAnswer, Category
-# 
+from django.contrib import admin
+from core.models import Profile,School,Address,GIS,EventDate,Contact,Category,SubCategory,Organization,Program,ProgramStatus,ProgramType,WatchList,WaitList,PublicTransport
+
 # class QuestionAnswerInline(admin.StackedInline):
 #     model = QuestionAnswer
 #     extra = 0
 # 
-# class CategoryAdmin(admin.ModelAdmin):
+
+# class ProfileAdmin(admin.ModelAdmin):
 #     inlines = [QuestionAnswerInline]
 #     fields = ['name']
 #     save_on_top = True
@@ -18,19 +19,63 @@
 #     inlines = [CategoryInline]
 #     save_on_top = True
 # 
-# admin.site.register(FAQ, FAQAdmin)
-# admin.site.register(Category, CategoryAdmin)
-# 
-# class PhoneField(models.CharField): pass
-# class School(models.Model):
-# class UserProfile(models.Model):
-# class Contact(models.Model):
-# class Category(models.Model):
-# class Location(models.Model):
-# class BusStop(models.Model):
-# class BartStop(models.Model):
-# class Address(models.Model):
-# class Organization(models.Model):
-# class EventDate(models.Model):
-# class Program(models.Model):
-# class Comment(models.Model):
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    pass
+
+class SchoolAdmin(admin.ModelAdmin):
+pass
+
+class AddressAdmin(admin.ModelAdmin):
+pass
+
+class GISAdmin(admin.ModelAdmin):
+pass
+
+class EventDateAdmin(admin.ModelAdmin):
+pass
+
+class ContactAdmin(admin.ModelAdmin):
+pass
+
+class SubCategoryAdmin(admin.ModelAdmin):
+pass
+
+class OrganizationAdmin(admin.ModelAdmin):
+pass
+
+class ProgramAdmin(admin.ModelAdmin):
+pass
+
+class ProgramStatusAdmin(admin.ModelAdmin):
+pass
+
+class ProgramTypeAdmin(admin.ModelAdmin):
+pass
+
+class WatchListAdmin(admin.ModelAdmin):
+pass
+
+class WatchListAdmin(admin.ModelAdmin):
+pass
+
+class PublicTransportAdmin(admin.ModelAdmin):
+pass
+
+admin.site.register(Profile, ProfileAdmin)
+admin.site.register(School, SchoolAdmin)
+admin.site.register(Address, AddressAdmin)
+admin.site.register(GIS, GISAdmin)
+admin.site.register(EventDate, EventDateAdmin)
+admin.site.register(Contact, ContactAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(SubCategory, SubCategoryAdmin)
+admin.site.register(Organization, OrganizationAdmin)
+admin.site.register(Program, ProgramAdmin)
+admin.site.register(ProgramStatus, ProgramStatusAdmin)
+admin.site.register(ProgramType, ProgramTypeAdmin)
+admin.site.register(WatchList, WatchListAdmin)
+admin.site.register(WaitList, WaitListAdmin)
+admin.site.register(PublicTransport, PublicTransportAdmin)
+
