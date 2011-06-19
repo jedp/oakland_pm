@@ -39,6 +39,9 @@ class EventDateAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     pass
 
+class CategoryAdmin(admin.ModelAdmin):
+    pass
+
 class SubCategoryAdmin(admin.ModelAdmin):
     pass
 
