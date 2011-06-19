@@ -147,7 +147,7 @@ class Program(models.Model):
     address = models.ForeignKey('Address')
      
     notes = models.TextField(blank=True, null=True)
-    primary_contact = models.ForeignKey('Contact')
+    primary_contact = models.ForeignKey('Contact', null=True)
  
     # Time
     dates = models.ManyToManyField('EventDate')
@@ -156,8 +156,9 @@ class Program(models.Model):
     cost = models.FloatField(default=0.00)
     agemin = models.PositiveIntegerField(default=13)
     agemax = models.PositiveIntegerField(default=18)
-    registration_needed = models.BooleanField(default=False)
-    registration_due_by = models.DateTimeField() # validate required if reg_needed
+    registration_needed = models.BooleanField(blank=True, default=False)
+    # validate required if reg_needed
+    registration_due_by = models.DateTimeField(blank=True, null=True) 
     registration_instructions = models.TextField(blank=True, null=True)
          
     # Organization
@@ -167,10 +168,12 @@ class Program(models.Model):
  
     # Meta
     is_active = models.BooleanField(default=False)
-    program_status = models.ForeignKey('ProgramStatus') # eg pending approval, approved, denied, need verifications, etc.
-    program_type = models.ForeignKey('ProgramType') # eg drop-in, register
+
+    program_status = models.ForeignKey('ProgramStatus', null=True) # eg pending approval, approved, denied, need verifications, etc.
+    program_type = models.ForeignKey('ProgramType', null=True) # eg drop-in, register
+
     rank = models.IntegerField(default=-1)
-    capcity = models.PositiveIntegerField() # who's going, how many total can attend
+    capcity = models.PositiveIntegerField(null=True) # who's going, how many total can attend
     wait_list = models.ForeignKey('WaitList', blank=True, null=True, related_name="program_wait_list")
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -178,6 +181,9 @@ class Program(models.Model):
     # holding
     # logo = models.ImageField()
     # attending = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.name
  
  
 class ProgramStatus(models.Model):
