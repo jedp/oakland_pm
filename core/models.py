@@ -49,7 +49,7 @@ class Address(models.Model):
     street2 = models.TextField(null=True)
     city = models.TextField(default='Oakland')
     state = USStateField(choices=STATE_CHOICES, default='CA', null=True)
-    country = CountryField(null=True)
+    country = CountryField(null=True, default='United States')
     zipcode = USPostalCodeField(null=True)
 
     # GIS is computed as a post-save process, so must
@@ -73,6 +73,7 @@ class EventDate(models.Model):
     Can this be replaced with a django scheduler?    
     """
     date = models.DateTimeField()
+    duration_mins = models.PositiveIntegerField(default=60)
 
     def __unicode__(self):
         return self.date.isoformat()
@@ -98,6 +99,8 @@ class Contact(models.Model):
             return self.phone
         if self.web:
             return self.web
+        return '<Contact at 0x%x>' % (id(self))
+
  
 class Category(models.Model):
     """
@@ -151,10 +154,7 @@ class Program(models.Model):
     primary_contact = models.ForeignKey('Contact')
  
     # Time
-    start_date = models.ManyToManyField('EventDate', related_name="program_startdate")
-    end_date = models.ManyToManyField('EventDate', related_name="program_enddate")
-    frequency = models.CharField(max_length=20, null=True) # todo: make this better, scheduling app?
- 
+    dates = models.ManyToManyField('EventDate')
      
     # Attendee Details
     cost = models.FloatField(default=0.00)
