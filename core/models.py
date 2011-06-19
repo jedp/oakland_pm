@@ -41,13 +41,12 @@ class School(models.Model):
     district = models.PositiveIntegerField(null=True)
  
 class Address(models.Model):
-    name = models.TextField(unique=True)
     street1 = models.TextField()
     street2 = models.TextField(null=True)
     city = models.TextField(default='Oakland')
-    state = USStateField(choices=STATE_CHOICES)
-    country = CountryField()
-    zipcode = USPostalCodeField()
+    state = USStateField(choices=STATE_CHOICES, default='CA', null=True)
+    country = CountryField(null=True)
+    zipcode = USPostalCodeField(null=True)
     location = models.ForeignKey('GIS')
 
 class GIS(models.Model):
