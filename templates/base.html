@@ -4,7 +4,7 @@
         <title>Oakland:PM</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/style.less">
-        <script src="{{ STATIC_URL }}js/headjs/dist/head.min.js"></script>
+        <script src="{{ STATIC_URL }}js/third_party/headjs/dist/head.min.js"></script>
     </head>
     <body role="page">
 		{% block masthead %}
@@ -32,10 +32,10 @@
             var csrf_token = "{{ c.csrf_token }}";
             head.js(
               {jquery:     "http://code.jquery.com/jquery-1.5.2.min.js"},
-              {less:       "{{ STATIC_URL }}js/less-1.1.3.min.js"},
-              {underscore: "{{ STATIC_URL }}js/underscore/underscore.js"},
-              {backbone:   "{{ STATIC_URL }}js/backbone/backbone.js"},
-              {raphael:    "{{ STATIC_URL }}js/raphael-min.js"},
+              {less:       "{{ STATIC_URL }}js/third_party/less-1.1.3.min.js"},
+              {underscore: "{{ STATIC_URL }}js/third_party/underscore/underscore.js"},
+              {backbone:   "{{ STATIC_URL }}js/third_party/backbone/backbone.js"},
+              {raphael:    "{{ STATIC_URL }}js/third_party/raphael-min.js"},
               {oaklandpm:  "http://use.typekit.com/clx5ygc.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/utils.js"},
               {oaklandpm:  "{{ STATIC_URL }}js/init.js"},

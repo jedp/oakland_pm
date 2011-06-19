@@ -1,12 +1,3 @@
-[submodule "static/js/headjs"]
-    path = static/js/headjs
-    url = https://github.com/headjs/headjs.git
-[submodule "static/js/backbone"]
-    path = static/js/backbone
-    url = https://github.com/documentcloud/backbone/
-[submodule "static/js/underscore"]
-    path = static/js/underscore
-    url = https://github.com/documentcloud/underscore/
 [submodule "django_social_auth"]
 	path = django_social_auth
 	url = git://github.com/omab/django-social-auth.git
@@ -16,3 +7,12 @@
 [submodule "less_js"]
 	path = less_js
 	url = git://github.com/cloudhead/less.js.git
+[submodule "static/js/third_party/headjs"]
+	path = static/js/third_party/headjs
+	url = https://github.com/headjs/headjs.git
+[submodule "static/js/third_party/backbone"]
+	path = static/js/third_party/backbone
+	url = https://github.com/documentcloud/backbone/
+[submodule "static/js/third_party/underscore"]
+	path = static/js/third_party/underscore
+	url = https://github.com/documentcloud/underscore/
