@@ -1,5 +1,6 @@
 import csv
 from core.models import *
+import random
 
 def bootstrap_schools():
     reader = csv.DictReader(open('data/schools.csv'))
@@ -96,6 +97,34 @@ def bootstrap_categories():
         print "Instaling category:", category
         Category.objects.get_or_create(name=category)
 
+def bootstrap_tags():
+
+    for tag in ['animals', 'architecture', 'art', 'asia', 'australia',
+            'autumn', 'baby', 'band', 'barcelona', 'beach', 'berlin', 'bike',
+            'bird', 'birds', 'birthday', 'black', 'blackandwhite', 'blue',
+            'bw', 'california', 'canada', 'canon', 'car', 'cat', 'chicago',
+            'china', 'christmas', 'church', 'city', 'clouds', 'color',
+            'concert', 'dance', 'day', 'de', 'dog', 'england', 'europe',
+            'fall', 'family', 'fashion', 'festival', 'film', 'florida',
+            'flower', 'flowers', 'food', 'football', 'france', 'friends',
+            'fun', 'garden', 'geotagged', 'germany', 'girl', 'graffiti',
+            'green', 'halloween', 'hawaii', 'holiday', 'house', 'india',
+            'instagramapp', 'iphone', 'iphoneography', 'island', 'italia',
+            'italy', 'japan', 'kids', 'la', 'lake', 'landscape', 'light',
+            'live', 'london', 'love', 'macro', 'me', 'mexico', 'model',
+            'mountain', 'museum', 'music', 'nature', 'new', 'newyork',
+            'newyorkcity', 'night', 'nikon', 'nyc', 'ocean', 'old', 'paris',
+            'park', 'party', 'people', 'photo', 'photography', 'photos',
+            'portrait', 'raw', 'red', 'river', 'rock', 'san', 'sanfrancisco',
+            'scotland', 'sea', 'seattle', 'show', 'sky', 'snow', 'spain',
+            'spring', 'square', 'squareformat', 'street', 'summer', 'sun',
+            'sunset', 'taiwan', 'texas', 'thailand', 'tokyo', 'toronto',
+            'tour', 'travel', 'tree', 'trees', 'trip', 'uk', 'urban', 'usa',
+            'vacation', 'vintage', 'washington', 'water', 'wedding', 'white',
+            'winter', 'yellow', 'zoo']:
+        print "Installing tag:", tag
+        Tag.objects.get_or_create(name=tag)
+
 def bootstrap_programs():
     import re
     program_block = re.compile("""
@@ -113,6 +142,8 @@ def bootstrap_programs():
         re.MULTILINE | re.VERBOSE)
 
     programs = open('data/ofcy.txt').read()
+    all_categories = [o.name for o in Category.objects.all()]
+    all_tags = [o.name for o in Tag.objects.all()]
 
     for match in program_block.finditer(programs):
         title, summary, street = match.groups()
@@ -124,14 +155,30 @@ def bootstrap_programs():
 
         address, _ = Address.objects.get_or_create(
                 street1 = street ) 
-        Program.objects.get_or_create(
+        program, _ = Program.objects.get_or_create(
                 name = title,
                 summary = summary,
                 address = address)
-        print "Imported program:",  title
+
+        # add two categories and five tags at random
+        for i in range(2):
+            name = random.choice(all_categories)
+            program.categories.add(
+                    Category.objects.get(name=name))
+        
+        for i in range(5):
+            name = random.choice(all_tags)
+            program.tags.add(
+                    Tag.objects.get(name=name))
+
+        print "Imported and tagged program:",  title
+
+
+
 
 def main():
     bootstrap_schools()
     bootstrap_organizations()
     bootstrap_categories()
+    bootstrap_tags()
     bootstrap_programs()

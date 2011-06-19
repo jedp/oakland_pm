@@ -162,8 +162,8 @@ class Program(models.Model):
     registration_instructions = models.TextField(blank=True, null=True)
          
     # Organization
-    category = models.ManyToManyField('Category')
-    tag = models.ManyToManyField('Tag')
+    categories = models.ManyToManyField('Category')
+    tags = models.ManyToManyField('Tag')
     # todo: make subcat intelligent based on cat selected
  
     # Meta

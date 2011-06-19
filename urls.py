@@ -26,8 +26,6 @@ urlpatterns += patterns('oakland_pm.web.views',
     url('^categories/', 'categories'),
     url('^about/', 'about'),
     url('^event/(?P<event_id>\d+)/', 'event'),
-
-
 )
 
 urlpatterns += patterns('oakland_pm.web.xhr',
