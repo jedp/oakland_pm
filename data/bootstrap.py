@@ -71,11 +71,11 @@ def bootstrap_programs():
             else:
                 organization, _ = Organization.objects.get_or_create(
                         name = name,
-                        headoffice = address)
+                        headoffice = address,
+                        contact=contact)
 
-            organization.contacts.add(contact)
-            organization.save()
-
+            print "Imported:", organization
+                    
 
 
 

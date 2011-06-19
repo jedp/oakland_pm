@@ -130,8 +130,7 @@ class Organization(models.Model):
     name = models.TextField(unique=True)
     about = models.TextField(null=True)
     headoffice = models.ForeignKey('Address', related_name='office')
-    otherlocations = models.ManyToManyField('Address', related_name='locations')
-    contacts = models.ManyToManyField('Contact')
+    contact = models.ForeignKey('Contact')
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)    
 
