@@ -45,18 +45,39 @@ def event(request, event_id):
              'program':program},
             context_instance=RequestContext(request))
 
-def category(request, name):
+def category_tag(request, category, tag):
     """
-    Get selected category and all projects and their tags
+    Get get programs by category and tag
     """
-    selected = Category.objects.get(name=name)
-    programs = Program.objects.filter(categories=selected)
-    tags = Tag.objects.filter(program__categories=selected)
+    selected_category = Category.objects.get(name=category)
+    tags = Tag.objects.filter(program__categories=selected_category).distinct()
+    selected_tag = Tag.objects.get(name=tag)
+
+    programs = Program.objects.filter(
+            categories=selected_category,
+            tags=selected_tag)
+
     return render_to_response('categories.html', 
             {'c': get_csrf(request),
              'categories': Category.objects.all(),
              'programs': programs,
-             'selected': selected,
+             'selected_category': selected_category,
+             'selected_tag': selected_tag, 
+             'tags': tags},
+            context_instance=RequestContext(request))
+
+def category(request, category):
+    """
+    Get selected category and all projects and their tags
+    """
+    selected_category = Category.objects.get(name=category)
+    programs = Program.objects.filter(categories=selected_category)
+    tags = Tag.objects.filter(program__categories=selected_category)
+    return render_to_response('categories.html', 
+            {'c': get_csrf(request),
+             'categories': Category.objects.all(),
+             'programs': programs,
+             'selected_category': selected_category,
              'tags': tags},
             context_instance=RequestContext(request))
 

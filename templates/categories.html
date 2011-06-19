@@ -6,8 +6,8 @@
 	<h4>Choose category</h4>
 	<ul class="list list-categories cf">
 		{% for category in categories %}
-            {% if category.pk == selected.pk %}
-                <li class='selected'><a href="/category/{{ category.name }}/#tags">{{ category.name }}</a></li>
+            {% if category.pk == selected_category.pk %}
+                <li class='selected'>{{ category.name }}</li>
             {% else %}
                 <li><a href="/category/{{ category.name }}/#tags">{{ category.name }}</a></li>
             {% endif  %}
@@ -20,13 +20,17 @@
 	<h4>Choose type</h4>
 	<ul class="list list-tags cf">
 		{% for tag in tags %}
-            <li>{{ tag.name }}</li>
+            {% if tag == selected_tag %}
+                <li class='selected'>{{ tag.name }}</li>
+            {% else %}
+                <li><a href="/category/{{ selected_category.name }}/tag/{{ tag.name }}/#events">{{ tag.name }}</a></li>
+            {% endif %}
 		{% endfor %}
 	</ul>
 	{% endif %}
 	
 	{% if programs %}
-    <a name='programs'/>
+    <a name='events'/>
 	<div class="numeral"><span>3</span></div>	
 	<h4>Choose event</h4>
         {% for program in programs %}

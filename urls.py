@@ -24,8 +24,9 @@ urlpatterns += patterns('oakland_pm.web.views',
     url('^friends/', 'friends'),
     url('^messages/', 'messages'),
 
+    url('^category/(?P<category>\w+)/tag/(?P<tag>\w+)/', 'category_tag'),
+    url('^category/(?P<category>\w+)/', 'category'),
     url('^categories/', 'categories'),
-    url('^category/(?P<name>\w+)/', 'category'),
 
     url('^about/', 'about'),
     url('^event/(?P<event_id>\d+)/', 'event'),
