@@ -173,7 +173,7 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     #'compressor',
     'django.contrib.localflavor',
-
+    
     'core',
     'web',
     'sms',
