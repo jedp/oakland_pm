@@ -81,10 +81,10 @@ class Profile(models.Model):
     """
     user = models.ForeignKey(User, unique=True, verbose_name='user')
     school = models.ForeignKey('School', null=True)
-    watch_list = models.ForeignKey('WatchList', null=True)
+    watch_list = models.ForeignKey('WatchList', null=True, related_name="profile_watch_list")
     
 class School(models.Model):
-    name = models.CharField(max_length=40, unqique=True)
+    name = models.CharField(max_length=40, unique=True)
     address = models.ForeignKey('Address', null=True)    
 
 
@@ -97,7 +97,7 @@ class Address(models.Model):
     country = CountryField()
     zipcode = USPostalCodeField()
     district = models.PositiveIntegerField(null=True) # prepopulated?
-    location = models.ForeginKey('Location')
+    location = models.ForeignKey('GIS')
 class GIS(models.Model):
     """
     GIS location data for events, schools,
@@ -160,7 +160,7 @@ class Organization(models.Model):
 class Program(models.Model):
     """
      Program info
-    """"
+    """
 
     # Core Details
     name = models.CharField(max_length=20, null=True)
@@ -173,8 +173,8 @@ class Program(models.Model):
     primary_contact = models.ForeignKey('Contact')
 
     # Time
-    start_date = models.ManyToManyField('EventDate')
-    end_date = models.ManyToManyField('EventDate')
+    start_date = models.ManyToManyField('EventDate', related_name="program_startdate")
+    end_date = models.ManyToManyField('EventDate', related_name="program_enddate")
     frequency = models.CharField(max_length=20, null=True) # todo: make this better, scheduling app?
 
     
@@ -194,10 +194,10 @@ class Program(models.Model):
     # Meta
     is_active = models.BooleanField(default=False)
     program_status = models.ForeignKey('ProgramStatus') # eg pending approval, approved, denied, need verifications, etc.
-    program_type = models.ForeignKey('ProgramTypes') # eg drop-in, register
-    rank = models.PositiveIntegerField(default=-1)
+    program_type = models.ForeignKey('ProgramType') # eg drop-in, register
+    rank = models.IntegerField(default=-1)
     capcity = models.PositiveIntegerField() # who's going, how many total can attend
-    wait_list = models.ForeignKey('WaitList', null=True)
+    wait_list = models.ForeignKey('WaitList', null=True, related_name="program_wait_list")
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
         
@@ -238,15 +238,15 @@ class ProgramType(models.Model):
 
 
 class WatchList(models.Model):
-    profile = models.ForeignKey('Profile')
-    program = models.ForeignKey('Program')
+    profile = models.ForeignKey('Profile', related_name="watchlist_profile")
+    program = models.ForeignKey('Program', related_name="watchlist_program")
     date_added = models.DateTimeField(auto_now_add=True)
     
 class WaitList(models.Model):
-    profile = models.ForeignKey('Profile')
-    program = models.ForeignKey('Program')
+    profile = models.ForeignKey('Profile', related_name="waitlist_profile")
+    program = models.ForeignKey('Program', related_name="waitlist_program")
     date_added = models.DateTimeField(auto_now_add=True)
-    position = models.PositiveIntegerField()
+    position = models.PositiveIntegerField(default=0)
     
     def save(self):
         self.position += 1
