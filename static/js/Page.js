@@ -38,8 +38,8 @@ opm.Feed = opm.Page({
     
     enter: function() {
         console.log('feed enter');
-        $.address.value('feed');
-        opm.common.getMarkup('feed', {}, function(res){
+        $.address.value('feed/'+feed_category);
+        opm.common.getMarkup(['feed', feed_id].join('/'), {}, function(res){
             $(this.container).html(res);
         }.bindScope(this));
     }
@@ -56,7 +56,7 @@ opm.EventDetail = opm.Page({
     },
     
     enter: function(event_id) {
-    	 $.address.value('event/'+event_id);
+        $.address.value('event/'+event_id);
         opm.common.getMarkup(['event', event_id].join('/'), {}, function(res){
             $(this.container).html(res);
         }.bindScope(this));
@@ -73,10 +73,10 @@ opm.Categories = opm.Page({
         console.log('categories setup');
     },
     
-    enter: function() {
+    enter: function(category_id) {
         console.log('categories enter');
-         $.address.value('categories');
-        opm.common.getMarkup('categories', {}, function(res){
+        $.address.value('categories/'+category_id);
+        opm.common.getMarkup(['category', category_id].join('/'), {}, function(res){
             $(this.container).html(res);
         }.bindScope(this));
     }
