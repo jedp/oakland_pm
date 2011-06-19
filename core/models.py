@@ -77,6 +77,9 @@ class EventDate(models.Model):
 
     def __unicode__(self):
         return self.date.isoformat()
+
+    class Meta:
+        ordering = ['date']
       
 class Contact(models.Model):
     """
@@ -150,7 +153,7 @@ class Program(models.Model):
     primary_contact = models.ForeignKey('Contact', null=True)
  
     # Time
-    dates = models.ManyToManyField('EventDate')
+    events = models.ManyToManyField('EventDate')
      
     # Attendee Details
     cost = models.FloatField(default=0.00)

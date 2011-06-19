@@ -1,6 +1,5 @@
 import csv
 from core.models import *
-import random
 
 def bootstrap_schools():
     reader = csv.DictReader(open('data/schools.csv'))
@@ -127,6 +126,8 @@ def bootstrap_tags():
 
 def bootstrap_programs():
     import re
+    import random
+
     program_block = re.compile("""
         ^
         ([A-Z].*?[A-Z]$)    # All-caps heading, w/ punct maybe
@@ -173,8 +174,34 @@ def bootstrap_programs():
 
         print "Imported and tagged program:",  title
 
+def bootstrap_events():
+    """
+    assign some dates to thing
+    """
+    import datetime
+    import random
+    # let's have each event occur once between 3 and 6 pm, 
+    # some day in the next month, and then recur for the next 1 to 8 weeks
 
+    start_hour = random.randint(15, 18)
+    now = datetime.datetime.now()
 
+    for program in Program.objects.all():
+        the_date = now.replace(hour=start_hour) + datetime.timedelta(random.randint(0, 31))
+        duration = random.randint(1,6) * 30
+        next_week = datetime.timedelta(7)
+
+        program.events.add(EventDate.objects.create(
+            date=the_date, 
+            duration_mins = duration))
+
+        for next_occur in range(random.randint(1,8)):
+            the_date += next_week
+            program.events.add(EventDate.objects.create(
+                date = the_date,
+                duration_mins = duration))
+
+    print "Scheduled", event.dates.count(), "events for", project
 
 def main():
     bootstrap_schools()
@@ -182,3 +209,4 @@ def main():
     bootstrap_categories()
     bootstrap_tags()
     bootstrap_programs()
+    bootstrap_events()
