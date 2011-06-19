@@ -25,43 +25,43 @@ class ProfileAdmin(admin.ModelAdmin):
     pass
 
 class SchoolAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class AddressAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class GISAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class EventDateAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class ContactAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class SubCategoryAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class OrganizationAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class ProgramAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class ProgramStatusAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class ProgramTypeAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class WatchListAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class WatchListAdmin(admin.ModelAdmin):
-pass
+    pass
 
 class PublicTransportAdmin(admin.ModelAdmin):
-pass
+    pass
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(School, SchoolAdmin)
