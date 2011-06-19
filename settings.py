@@ -221,6 +221,9 @@ try:
     INSTALLED_APPS.append('social_auth')
     _HAVE_SOCIAL_AUTH = True
 except ImportError:
+    AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
     print >> sys.stderr, "It's ok for dev - but I can't include social_auth"
 
 # ----------------------------------------------------------------------

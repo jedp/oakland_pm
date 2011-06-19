@@ -17,7 +17,7 @@ AUTHENTICATION_BACKENDS = (
     #'social_auth.backends.contrib.orkut.OrkutBackend',
     #'social_auth.backends.contrib.orkut.FoursquareBackend',
     #'social_auth.backends.OpenIDBackend',
-    #'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
         
 # ----------------------------------------------------------------------
