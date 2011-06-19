@@ -112,7 +112,7 @@ opm.pages = {
         $(opm.constants.CONTENT_CONTAINER).html(container);
     },
     
-    select: function() {  	
+    select: function() {
 		var args = Array.create(arguments);
         var page_name = args.shift();
         var page = opm.pages[page_name];
