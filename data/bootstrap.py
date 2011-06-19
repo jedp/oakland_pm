@@ -76,6 +76,29 @@ def bootstrap_programs():
 
             print "Imported:", organization
                     
-
+def bootstrap_categories():
+    categories = {
+            'Music': [],
+            'Dance': [],
+            'Sports': [
+                'Basketball',
+                'Baseball',
+                'Soccer',
+                'Jai Alai',
+                'Billiards', 
+                'Swimming',
+                'Rock Clibming',
+                'Bicycling',
+                'Parcour',
+                'Skateboarding',
+                'Roller-Skating',
+                'Martial Arts',
+                'Bowling'],
+            'Cooking': [],
+            'Theater': [],
+            'Visual Art': [],
+            'Making Things': [],
+            'Academics': []
+            }
 
 
