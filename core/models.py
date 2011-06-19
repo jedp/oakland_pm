@@ -98,6 +98,8 @@ class Contact(models.Model):
             return self.phone
         if self.web:
             return self.web
+        return '<Contact at 0x%x>' % (id(self))
+
  
 class Category(models.Model):
     """
