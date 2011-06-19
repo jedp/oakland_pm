@@ -23,11 +23,22 @@ class Profile(models.Model):
     user = models.ForeignKey(User, unique=True, verbose_name='user')
     school = models.ForeignKey('School', null=True)
     watch_list = models.ForeignKey('WatchList', null=True, related_name="profile_watch_list")
+
+    # class Meta:
+    #      verbose_name_plural = 'Profiles'
+    #      ordering = ('user',)
+    # 
+    #  def __unicode__(self):
+    #      return self.user
+    # 
+    #  @models.permalink
+    #  def get_absolute_url(self):
+    #      return ('view_forum_category', (self.forum.slug, self.slug,))    
      
 class School(models.Model):
     name = models.CharField(max_length=40, unique=True)
     address = models.ForeignKey('Address', null=True)    
-    # district
+    district = models.PositiveIntegerField(null=True)
  
 class Address(models.Model):
     name = models.TextField(unique=True)
@@ -110,7 +121,7 @@ class Program(models.Model):
     organization = models.ForeignKey('Organization', null=True)
     address = models.ForeignKey('Address')
      
-    notes = models.DateTimeField(null=True)
+    notes = models.TextField(null=True)
     primary_contact = models.ForeignKey('Contact')
  
     # Time

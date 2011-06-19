@@ -60,7 +60,7 @@ class ProgramTypeAdmin(admin.ModelAdmin):
 class WatchListAdmin(admin.ModelAdmin):
     pass
 
-class WatchListAdmin(admin.ModelAdmin):
+class WaitListAdmin(admin.ModelAdmin):
     pass
 
 class PublicTransportAdmin(admin.ModelAdmin):
