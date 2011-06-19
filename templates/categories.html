@@ -5,52 +5,35 @@
 	<div class="numeral"><span>1</span></div>	
 	<h4>Choose category</h4>
 	<ul class="list list-categories cf">
-		{#{% for category in categories %}#}
-		<li>Visual Art</li>
-		<li>Music</li>
-		<li>Dance</li>
-		<li class="selected">Sports</li>
-		<li>Academics</li>
-		<li>Theater</li>
-		<li>Cooking</li>
-		<li>Makers</li>
-		{#{% endfor %}#}
+		{% for category in categories %}
+            {% if category.pk == selected.pk %}
+                <li class='selected'><a href='/category/{{ category.name }}/">{{ category.name }}</a></li>
+            {% else %}
+                <li><a href='/category/{{ category.name }}/">{{ category.name }}</a></li>
+            {% endif  %}
+		{% endfor %}
 	</ul>
 	
-	{#{% if tags %}#}
+	{% if tags %}
 	<div class="numeral"><span>2</span></div>	
 	<h4>Choose type</h4>
 	<ul class="list list-tags cf">
-		{#{% for tag in tags %}#}
-		<li>Baseball</li>
-		<li>Basketball</li>
-		<li>Soccer</li>
-		<li>Chess</li>
-		<li class="selected">Snooker</li>
-		<li>Jai-alai</li>
-		<li>Billiard</li>
-		<li>Swimming</li>
-		<li>Rock climbing</li>
-		<li>Bicycling</li>
-		<li>Parcour</li>
-		<li>Skateboarding</li>
-		<li>Rollerskating</li>
-		<li>Martial Arts</li>
-		<li>Bowling</li>
-		{#{% endfor %}#}
+		{% for tag in tags %}
+            <li>{{ tag.name }}</li>
+		{% endfor %}
 	</ul>
-	{#{% endif %}#}
+	{% endif %}
 	
-	{#{% if tables %}#}
+	{% if programs %}
 	<div class="numeral"><span>3</span></div>	
 	<h4>Choose event</h4>
-	{#{% for table in tables %}#}
-	<ul class="list-table cf">
-		<li class="title">Hockey and Snooker Class</li>
-		<li class="distance">Distance 2.2mi</li>
-		<li class="time-until">Event in 3 days</li>
-	</ul>
-	{#{% endfor %}#}
-	{#{% endif %}#}
+        {% for program in programs %}
+        <ul class="list-table cf">
+            <li class="title">{{ program.name }}</li>
+            <li class="distance">Distance 2.2mi</li>
+            <li class="time-until">Event in 3 days</li>
+        </ul>
+    	{% endfor %}
+	{% endif %}
 </div>
 {% endblock %}

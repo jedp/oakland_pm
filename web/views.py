@@ -4,6 +4,8 @@ from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.core.context_processors import csrf
 
+from core.models import *
+
 def get_csrf(request):
     c = {}
     c.update(csrf(request))    
@@ -42,9 +44,25 @@ def event(request, event_id):
             {'c': get_csrf(request), "program":program},
             context_instance=RequestContext(request))
 
+def category(request, name):
+    """
+    Get selected category and all projects and their tags
+    """
+    selected = Category.objects.get(name=name)
+    programs = Program.objects.filter(categories=selected)
+    tags = Tag.objects.filter(program__categories=selected)
+    return render_to_response('categories.html', 
+            {'c': get_csrf(request),
+             'categories': Category.objects.all(),
+             'programs': programs,
+             'selected': selected,
+             'tags': tags},
+            context_instance=RequestContext(request))
+
 def categories(request):
     return render_to_response('categories.html', 
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request),
+             'categories': Category.objects.all()},
             context_instance=RequestContext(request))
     
 def about(request):

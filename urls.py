@@ -23,7 +23,10 @@ urlpatterns += patterns('oakland_pm.web.views',
     url('^search/', 'search'),
     url('^friends/', 'friends'),
     url('^messages/', 'messages'),
+
     url('^categories/', 'categories'),
+    url('^category/(?P<name>\w+)/', 'category'),
+
     url('^about/', 'about'),
     url('^event/(?P<event_id>\d+)/', 'event'),
 )
