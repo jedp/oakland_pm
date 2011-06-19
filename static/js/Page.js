@@ -83,6 +83,24 @@ opm.Categories = opm.Page({
     }
 });
 
+opm.About = opm.Page({
+    init: function() {
+        console.log('about init');
+        this.container = E('div');
+    },
+    
+    setup: function() {
+        console.log('about setup');
+    },
+    
+    enter: function() {
+        console.log('about enter');
+        opm.common.getMarkup('about', {}, function(res){
+            $(this.container).html(res);
+        }.bindScope(this));
+    }
+});
+
 /* END PAGE DEFINITIONS */
 
 opm.pages = {
