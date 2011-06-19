@@ -451,28 +451,32 @@ a:hover {
     
 }
 
+/* search*/
 .categories {
     
-    .list li {
-        .rounded;
-        border:1px solid #000;
-        float:left;
-        margin:0 .25em .25em 0;
-        padding:.45em .65em .25em .65em; 
-        
+    .group {
+        border-bottom:1px solid rgb(0,0,0);
+        margin:0 0 4em 0;
     }
-    .selected {
-        background:rgba(0,0,0,.3);
+    
+    h4 {
+        margin:3em 0;
+        padding:.5em 0;
+        text-align:center;
+        border-width:1px;
+        border-style:dashed none;
+        border-color:darken(@papercolor, 20%);
+        background:darken(@papercolor, 4%);
+        color:darken(@papercolor, 60%);
     }
 
-    .list-categories {
-        font-size:2.35em;
-    }
-
-    .list-tags {
+    .list-tags li {
         font-size:1.35em;
+        float:left;
+        margin:0 1em 0 0;
     }
 
+    
 
     .list-table {
         display:table;
@@ -487,28 +491,9 @@ a:hover {
 
     }
 
-    .numeral {
-        display:inline-block;
-        color:#fff;
-        height:10em;
-        width:10em;
-        border-radius:5em;
-        background:rgb(0,0,0);
-        text-align:center;
-        position:relative;
-        
-        span {
-            width:2em;
-            height:2em;
-            margin:-.825em 0 0 -1em;
-            top:50%;
-            left:50%;
-            position:absolute;
-            font-size:8em;
-            color:@papercolor;
+
     
-        }
-    }
+
 
 }
 
