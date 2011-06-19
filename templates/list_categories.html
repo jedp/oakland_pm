@@ -1,45 +1,141 @@
 <div id="categories" class="page categories">
-	<div class="numeral"><span>1</span></div>	
 	<h4>Choose category</h4>
-	<ul class="list list-categories cf">
+
 		{#{% for category in categories %}#}
-		<li>Visual Art</li>
-		<li>Music</li>
-		<li>Dance</li>
-		<li class="selected">Sports</li>
-		<li>Academics</li>
-		<li>Theater</li>
-		<li>Cooking</li>
-		<li>Makers</li>
+		<div class="group">
+			<h2>Visual Art</h2>
+			{#{% if tags %}#}
+			<ul class="list list-tags cf">
+				{#{% for tag in tags %}#}
+				<li>Baseball</li>
+				<li>Basketball</li>
+				<li>Soccer</li>
+				<li>Chess</li>
+				<li>Snooker</li>
+				<li>Jai-alai</li>
+				<li>Billiard</li>
+				<li>Swimming</li>
+				<li>Rock climbing</li>
+				<li>Bicycling</li>
+				<li>Parcour</li>
+				<li>Skateboarding</li>
+				<li>Rollerskating</li>
+				<li>Martial Arts</li>
+				<li>Bowling</li>
+				{#{% endfor %}#}
+			</ul>
+			{#{% endif %}#}
+		</div>
+		<div class="group">
+			<h2>Music</h2>
+			{#{% if tags %}#}
+			<ul class="list list-tags cf">
+				{#{% for tag in tags %}#}
+				<li>Baseball</li>
+				<li>Basketball</li>
+				<li>Soccer</li>
+				<li>Chess</li>
+				<li>Snooker</li>
+				<li>Jai-alai</li>
+				<li>Billiard</li>
+				<li>Swimming</li>
+				<li>Rock climbing</li>
+				<li>Bicycling</li>
+				<li>Parcour</li>
+				<li>Skateboarding</li>
+				<li>Rollerskating</li>
+				<li>Martial Arts</li>
+				<li>Bowling</li>
+				{#{% endfor %}#}
+			</ul>
+			{#{% endif %}#}
+		</div>
+		<div class="group">
+			<h2>Dance</h2>
+			{#{% if tags %}#}
+			<ul class="list list-tags cf">
+				{#{% for tag in tags %}#}
+				<li>Baseball</li>
+				<li>Basketball</li>
+				<li>Soccer</li>
+				<li>Chess</li>
+				<li>Snooker</li>
+				<li>Jai-alai</li>
+				<li>Billiard</li>
+				<li>Swimming</li>
+				<li>Rock climbing</li>
+				<li>Bicycling</li>
+				<li>Parcour</li>
+				<li>Skateboarding</li>
+				<li>Rollerskating</li>
+				<li>Martial Arts</li>
+				<li>Bowling</li>
+				{#{% endfor %}#}
+			</ul>
+			{#{% endif %}#}
+		</div>	
+		<div class="group">
+		<h2>Sports</h2>
+			{#{% if tags %}#}
+			<ul class="list list-tags cf">
+				{#{% for tag in tags %}#}
+				<li>Baseball</li>
+				<li>Basketball</li>
+				<li>Soccer</li>
+				<li>Chess</li>
+				<li>Snooker</li>
+				<li>Jai-alai</li>
+				<li>Billiard</li>
+				<li>Swimming</li>
+				<li>Rock climbing</li>
+				<li>Bicycling</li>
+				<li>Parcour</li>
+				<li>Skateboarding</li>
+				<li>Rollerskating</li>
+				<li>Martial Arts</li>
+				<li>Bowling</li>
+				{#{% endfor %}#}
+			</ul>
+			{#{% endif %}#}
+		</div>
+		<div class="group">
+			<h2>Academics</h2>
+			{#{% if tags %}#}
+			<ul class="list list-tags cf">
+				{#{% for tag in tags %}#}
+				<li>Baseball</li>
+				<li>Basketball</li>
+				<li>Soccer</li>
+				<li>Chess</li>
+				<li>Snooker</li>
+				<li>Jai-alai</li>
+				<li>Billiard</li>
+				<li>Swimming</li>
+				<li>Rock climbing</li>
+				<li>Bicycling</li>
+				<li>Parcour</li>
+				<li>Skateboarding</li>
+				<li>Rollerskating</li>
+				<li>Martial Arts</li>
+				<li>Bowling</li>
+				{#{% endfor %}#}
+			</ul>
+			{#{% endif %}#}
+		</div>	
+		<div class="group">
+			<h2>Theater</h2>
+		</div>	
+		<div class="group">
+			<h2>Cooking</h2>
+		</div>	
+		<div class="group">
+			<h2>Makers</h2>
+		</div>	
 		{#{% endfor %}#}
-	</ul>
 	
-	{#{% if tags %}#}
-	<div class="numeral"><span>2</span></div>	
-	<h4>Choose type</h4>
-	<ul class="list list-tags cf">
-		{#{% for tag in tags %}#}
-		<li>Baseball</li>
-		<li>Basketball</li>
-		<li>Soccer</li>
-		<li>Chess</li>
-		<li class="selected">Snooker</li>
-		<li>Jai-alai</li>
-		<li>Billiard</li>
-		<li>Swimming</li>
-		<li>Rock climbing</li>
-		<li>Bicycling</li>
-		<li>Parcour</li>
-		<li>Skateboarding</li>
-		<li>Rollerskating</li>
-		<li>Martial Arts</li>
-		<li>Bowling</li>
-		{#{% endfor %}#}
-	</ul>
-	{#{% endif %}#}
+
 	
 	{#{% if tables %}#}
-	<div class="numeral"><span>3</span></div>	
 	<h4>Choose event</h4>
 	{#{% for table in tables %}#}
 	<ul class="list-table cf">

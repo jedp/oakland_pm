@@ -115,12 +115,13 @@ opm.pages = {
         opm.pages._current = container;
         $(opm.constants.CONTENT_CONTAINER).html(container);
     },
-    
-    select: function(init) {  
-    	
-    	var hashPath = 	$.address.value().split("/")[1];
+ 
+    select: function() {
+		
+		var hashPath = 	$.address.value().split("/")[1];
     	console.log("hashPath :" + hashPath);
     	
+    
 		var args = Array.create(arguments);
         var page_name = args.shift();
         console.log("page_name :" + page_name);
