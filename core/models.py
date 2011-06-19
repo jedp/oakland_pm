@@ -77,7 +77,7 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=20, null=True)
     role = models.TextField(null=True)
     phone = PhoneNumberField(null=True)
-    smsok = models.BooleanField(default=False, null=True)
+    smsok = models.BooleanField(default=False)
     tdd = PhoneNumberField(max_length=20, null=True)
     fax = PhoneNumberField(max_length=20, null=True)
     email = models.EmailField(null=True)
