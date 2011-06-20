@@ -36,9 +36,9 @@ opm.Feed = opm.Page({
         console.log('feed setup');
     },
     
-    enter: function() {
+    enter: function(feed_id) {
         console.log('feed enter');
-        $.address.value('feed/'+feed_category);
+        $.address.value('feed/'+feed_id);
         opm.common.getMarkup(['feed', feed_id].join('/'), {}, function(res){
             $(this.container).html(res);
         }.bindScope(this));
