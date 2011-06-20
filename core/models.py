@@ -50,7 +50,7 @@ class Address(models.Model):
     city = models.CharField(max_length=100, default='Oakland')
     state = USStateField(choices=STATE_CHOICES, default='CA', blank=True, null=True)
     country = CountryField(blank=True, null=True, default='US')
-    zipcode = USPostalCodeField(blank=True, null=True)
+    zipcode = models.CharField(max_length=10, blank=True, null=True)
 
     # GIS is computed as a post-save process, so must
     # be able to be null on first save
