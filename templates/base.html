@@ -8,10 +8,15 @@
         <script src="{{ STATIC_URL }}js/third_party/headjs/dist/head.min.js"></script>
 
         <style type="text/css">
+            {# this body def is here to help combat fout while #}
+            {# the css/typekit is loading #}
+            body { background: rgb(240,240,210) }
+
+            {# hide elements while css is loading to combat fout #}
             .wf-loading .masthead,
             .wf-loading .content, 
             .wf-loading .nav {
-             visibility: hidden;
+                visibility: hidden;
             }
         </style>
         
