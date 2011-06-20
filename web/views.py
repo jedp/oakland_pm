@@ -24,7 +24,6 @@ def feed(request):
     """ 
     import datetime
     programs = Program.objects.filter(events__date__gt=datetime.datetime.now()).order_by('events__date')[:40]
-    print dir(request.user)
     return render_to_response('feed.html', 
             {'programs': programs,
              'c': get_csrf(request),

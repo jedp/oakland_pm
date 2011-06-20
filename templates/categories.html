@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block content %}
 <div id="categories" class="page categories">
@@ -37,7 +38,9 @@
         <ul class="list-table cf">
             <li class="title"><a href="/event/{{ program.id }}/">{{ program.name }}</a></li>
             <li class="distance">Distance 2.2mi</li>
-            <li class="time-until">Event in 3 days</li>
+            <li class="time-until">Event in 
+                <abbr class="date" title="{{ program.next_event }}">{{ program.next_event|naturaltime }}</abbr>
+            </li>
         </ul>
     	{% endfor %}
 	{% endif %}
