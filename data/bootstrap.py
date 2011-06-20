@@ -6,7 +6,7 @@ def bootstrap_schools():
     for school in reader:
         if school['TYPE'] == 'High':
             address = school['ADDRESS']
-            phone = school['PHONE_1']
+            phone = school['PHONE_1'][:10]
 
             # School names come in screaming in all caps.
             # Could it look more institutional and asinine?
@@ -43,12 +43,12 @@ def bootstrap_organizations():
             agency = program['agency'].strip()
             address = program['address'].strip()
             city = program['city'].strip()
-            state = program['state'].strip()
-            zip = program['zip'].strip()
+            state = program['state'].strip()[:2]
+            zip = program['zip'].strip()[:10]
             district = program['district'].strip()
-            phone = program['phone'].strip()
-            fax = program['fax'].strip()
-            tdd = program['tdd'].strip()
+            phone = program['phone'].strip()[:10]
+            fax = program['fax'].strip()[:10]
+            tdd = program['tdd'].strip()[:10]
             email = program['email'].strip()
             web = program['web'].strip()
 
