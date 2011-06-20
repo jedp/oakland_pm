@@ -14,7 +14,8 @@ def get_csrf(request):
 
 def home(request):
     return render_to_response('home.html', 
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request),
+             'user': request.user},
             context_instance=RequestContext(request))
     
 def feed(request):
@@ -23,24 +24,29 @@ def feed(request):
     """ 
     import datetime
     programs = Program.objects.filter(events__date__gt=datetime.datetime.now()).order_by('events__date')[:40]
+    print dir(request.user)
     return render_to_response('feed.html', 
             {'programs': programs,
-             'c': get_csrf(request)},
+             'c': get_csrf(request),
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def search(request):
     return render_to_response('search.html',
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request),
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def friends(request):
     return render_to_response('friends.html',
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request),
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def messages(request):
     return render_to_response('messages.html',
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request),
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def event(request, event_id):
@@ -48,7 +54,8 @@ def event(request, event_id):
     #eventData = render_to_string('my_template.html', { 'foo': 'bar' })
     return render_to_response('event.html', 
             {'c': get_csrf(request), 
-             'program':program},
+             'program':program,
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def category_tag(request, category, tag):
@@ -69,7 +76,8 @@ def category_tag(request, category, tag):
              'programs': programs,
              'selected_category': selected_category,
              'selected_tag': selected_tag, 
-             'tags': tags},
+             'tags': tags,
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def category(request, category):
@@ -84,16 +92,19 @@ def category(request, category):
              'categories': Category.objects.all(),
              'programs': programs,
              'selected_category': selected_category,
-             'tags': tags},
+             'tags': tags,
+             'user': request.user},
             context_instance=RequestContext(request))
 
 def categories(request):
     return render_to_response('categories.html', 
             {'c': get_csrf(request),
-             'categories': Category.objects.all()},
+             'categories': Category.objects.all(),
+             'user': request.user},
             context_instance=RequestContext(request))
     
 def about(request):
     return render_to_response('about.html', 
-            {'c': get_csrf(request)},
+            {'c': get_csrf(request),
+             'user': request.user},
             context_instance=RequestContext(request))
