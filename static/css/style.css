@@ -4,368 +4,578 @@
 	Credit is left where credit is due
 	Much content and inspiration was taken from the normalize.css project: http://necolas.github.com/normalize.css/ and https://github.com/jonathantneal/normalize.css
 */
-
 /* `HTML5 elements display-role
 ---------------------------------------- */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+dialog {
+  display: block;
 }
-
 /* `Base structure
 ---------------------------------------- */
 html {
-	height: 100%;
-	font-size: 100%;
-	overflow-y: scroll; /* Force a scrollbar in non-IE */
-	-webkit-text-size-adjust: 100%; /* Remove iOS text size adjust without disabling user zoom */
+  height: 100%;
+  font-size: 100%;
+  overflow-y: scroll;
+  /* Force a scrollbar in non-IE */
+
+  -webkit-text-size-adjust: 100%;
+  /* Remove iOS text size adjust without disabling user zoom */
+
 }
 body {
-	margin: 0;
-	min-height: 100%;
-	font: 16px/1.625 "adelle-1","adelle-2";
-	*font-size: 1em; /* IE7 and older: IE can't resize px based text and most mobiles don't default the text to 16px */
-	color: #222; /* Black on white is too much contrast, #222 is a lot better */
+  margin: 0;
+  min-height: 100%;
+  font: 16px/1.625 "adelle-1", "adelle-2";
+  *font-size: 1em;
+  /* IE7 and older: IE can't resize px based text and most mobiles don't default the text to 16px */
+
+  color: #222;
+  /* Black on white is too much contrast, #222 is a lot better */
+
 }
 /* Font settings */
-body, button, input, select, textarea {
-	font: 16px/1.625 "adelle-1","adelle-2";
-	*font-size: 1em; /* IE7 and older: IE can't resize px based text and most mobiles don't default the text to 16px */
-	color: #222; /* Black on white is too much contrast, #222 is a lot better */
-}
-p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldset, menu, h4, h5, h6, img {
-	margin: 0 0 1.625em;
-}
+body,
+button,
+input,
+select,
+textarea {
+  font: 16px/1.625 "adelle-1", "adelle-2";
+  *font-size: 1em;
+  /* IE7 and older: IE can't resize px based text and most mobiles don't default the text to 16px */
 
+  color: #222;
+  /* Black on white is too much contrast, #222 is a lot better */
+
+}
+p,
+blockquote,
+q,
+pre,
+address,
+hr,
+code,
+samp,
+dl,
+ol,
+ul,
+form,
+table,
+fieldset,
+menu,
+h4,
+h5,
+h6,
+img {
+  margin: 0 0 1.625em;
+}
 /* `Headings and small
 ---------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
-	font-weight: 300;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
 }
 h1 {
-	font-size: 4.25em; /* 68px */
-	line-height: 1.1471em;
-	margin: 0 0 0.3824em;
+  font-size: 4.25em;
+  /* 68px */
+
+  line-height: 1.1471em;
+  margin: 0 0 0.3824em;
 }
 h2 {
-	font-size: 2.625em; /* 42px */
-	line-height: 1.2381em;
-	margin: 0 0 0.619em;	
+  font-size: 2.625em;
+  /* 42px */
+
+  line-height: 1.2381em;
+  margin: 0 0 0.619em;
 }
 h3 {
-	font-size: 1.625em; /* 26px */
-	line-height: 1em;
-	margin: 0 0 1em;
+  font-size: 1.625em;
+  /* 26px */
+
+  line-height: 1em;
+  margin: 0 0 1em;
 }
 h4, h5, h6 {
-	font-size: 1em;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-family: "proxima-nova-1", "proxima-nova-2";
+  font-weight: 600;
 }
 small {
-	font-size: 0.625em; /* 10px */
-	margin: 0 0 2.6em;
-}
+  font-size: 0.625em;
+  /* 10px */
 
+  margin: 0 0 2.6em;
+}
 /* `Code
 ---------------------------------------- */
 /* Allows line wrapping of 'pre' */
 pre {
-	white-space: pre;
-	white-space: pre-wrap;
-	word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
-pre, code, kbd, samp {
-	font: 1em/1.625em Menlo, Consolas, 'DejaVu Sans Mono', Monaco, monospace;
+pre,
+code,
+kbd,
+samp {
+  font: 1em/1.625em Menlo, Consolas, 'DejaVu Sans Mono', Monaco, monospace;
 }
-
 /* `Tables
 ---------------------------------------- */
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 th {
-	text-align: left;
+  text-align: left;
 }
 tr, th, td {
-	padding-right: 1.625em;
-	border-bottom: 1px solid #333;
+  padding-right: 1.625em;
+  border-bottom: 1px solid #333;
 }
-
 /* `Forms
 ---------------------------------------- */
 form {
-	margin: 0;
+  margin: 0;
 }
 fieldset {
-	border: 0;
-	padding: 0;
+  border: 0;
+  padding: 0;
 }
 textarea {
-	overflow: auto;
-	vertical-align: top;
+  overflow: auto;
+  vertical-align: top;
 }
 legend {
-	*margin-left: -7px;
+  *margin-left: -7px;
 }
+button,
+input,
+select,
+textarea {
+  font: 1em/1.625em Georgia, serif;
+  color: #222;
+  vertical-align: baseline;
+  *vertical-align: middle;
+  /* IE7 and older */
 
-button, input, select, textarea {
-	font: 1em/1.625em Georgia, serif;
-	color: #222;
-	vertical-align: baseline;
-	*vertical-align: middle; /* IE7 and older */
 }
 button, input {
-	line-height: normal;
-	*overflow: visible;
+  line-height: normal;
+  *overflow: visible;
 }
-button, input[type="button"], input[type="reset"], input[type="submit"] {
-	cursor: pointer;
-	-webkit-appearance: button;
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
 }
 input[type="checkbox"], input[type="radio"] {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 input[type="search"] {
-	-webkit-appearance: textfield;
-	-moz-box-sizing: content-box;
-	-webkit-box-sizing: content-box;
-	box-sizing: content-box;
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 input[type="search"]::-webkit-search-decoration {
-	-webkit-appearance: none;
+  -webkit-appearance: none;
 }
 button::-moz-focus-inner, input::-moz-focus-inner {
-	border: 0;
-	padding: 0;
+  border: 0;
+  padding: 0;
 }
-
 /* `Quotes
 ---------------------------------------- */
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
-blockquote:before, blockquote:after, q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 blockquote, q, cite {
-	font-style: italic;
+  font-style: italic;
 }
 blockquote {
-	padding-left: 1.625em;
-	border-left: 3px solid #ccc;
+  padding-left: 1.625em;
+  border-left: 3px solid #ccc;
 }
 blockquote > p {
-	padding: 0;
+  padding: 0;
 }
-
 /* `Lists
 ---------------------------------------- */
 ul, ol {
-	list-style-position: inside;
-	padding: 0;
-	list-style-type:none;
+  list-style-position: inside;
+  padding: 0;
+  list-style-type: none;
 }
 li ul, li ol {
-	margin: 0 1.625em;
+  margin: 0 1.625em;
 }
 dl dd {
-	margin-left: 1.625em;
+  margin-left: 1.625em;
 }
-
 /* `Hyperlinks
 ---------------------------------------- */
 a {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
+  text-decoration: none;
 }
 a:focus {
-	outline: thin dotted;
+  outline: thin dotted;
 }
 /* Better CSS outline suppression: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active {
-	outline: none;
+  outline: none;
 }
-
 /* `Visual media
 ---------------------------------------- */
 figure {
-	margin: 0;
+  margin: 0;
 }
-img, object, embed, video {
-	max-width: 100%; /* Consider this first: http://unstoppablerobotninja.com/entry/fluid-images/ */
-	width: 100%;
-	/* *width: width_of_the_imagepx; /* Do this if the image is larger than the container. Since IE doesn't support max-width, it'll get the absolute width. Nice, huh? */
+img,
+object,
+embed,
+video {
+  /*max-width: 100%;*/
+  /* Consider this first: http://unstoppablerobotninja.com/entry/fluid-images/ */
+
+  /*width: 100%;*/
+
+  /* *width: width_of_the_imagepx; /* Do this if the image is larger than the container. Since IE doesn't support max-width, it'll get the absolute width. Nice, huh? */
+
 }
 img {
-	border: 0;
-	-ms-interpolation-mode: bicubic; /* Improve IE's resizing of images: http://css-tricks.com/ie-fix-bicubic-scaling-for-images */
-}
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  /* Improve IE's resizing of images: http://css-tricks.com/ie-fix-bicubic-scaling-for-images */
 
+}
 /* `Abbreviations
 ---------------------------------------- */
 abbr[title], dfn[title] {
-	border-bottom: 1px dotted #333;
-	cursor: help;
+  border-bottom: 1px dotted #333;
+  cursor: help;
 }
-
 /* `Marked/inserted and deleted text
 ---------------------------------------- */
 ins, mark {
-	text-decoration: none;
+  text-decoration: none;
 }
 mark {
-	background: #ff0;
+  background: #ff0;
 }
 ins {
-	background: #ff9;
+  background: #ff9;
 }
 del {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
-
 /* `Others
 ---------------------------------------- */
 strong, b, dt {
-	font-weight: bold;
+  font-weight: bold;
 }
 dfn {
-	font-style: italic;
+  font-style: italic;
 }
 var, address {
-	font-style: normal;
+  font-style: normal;
 }
 /* Position 'sub' and 'sup' without affecting line-height: gist.github.com/413930 */
 sub, sup {
-	font-size: 0.625em;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+  font-size: 0.625em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 sup {
-	top: -0.5em;
+  top: -0.5em;
 }
 sub {
-	bottom: -0.25em;
+  bottom: -0.25em;
 }
-
 /* `Clearfix hack: http://nicolasgallagher.com/micro-clearfix-hack/
 ---------------------------------------- */
-.cf:before, .cf:after { 
-	content: ""; 
-	display: table; 
+.cf:before, .cf:after {
+  content: "";
+  display: table;
 }
-.cf:after { 
-	clear: both; 
+.cf:after {
+  clear: both;
 }
-.cf { 
-	*zoom: 1;
+.cf {
+  *zoom: 1;
 }
-
 /* `Default (mobile) styles
 ---------------------------------------- */
 /* Centering pages without a wrapper: http://www.camendesign.com/code/developpeurs_sans_frontieres */
 /* The body will work like a 'div#wrapper': add the background of the page to the 'html' tag and the background of the wrapper to the 'body' tag */
 body {
-	width: 92%;
-	margin: 0 auto;
-	background:rgb(240,240,210);
+  width: 92%;
+  margin: 0 auto;
+  background: #f0f0d2;
+  text-align: center;
 }
-
+a {
+  color: #aa8c4b;
+}
+a:hover {
+  color: #63522c;
+}
 .page {
-    text-align:center;
-    padding:2em;
+  text-align: left;
 }
+.masthead {
+  text-align: center;
+  border-color: #000000;
+  border-style: solid none;
+  border-width: 1em 0 1px 0;
+  margin: 1em 0 2em 0;
+  padding: 2em 0 1.75em 0;
+}
+.masthead a {
+  color: #000000;
+}
+.masthead h3 {
+  margin: 0;
+  color: #000000;
+  font-family: "proxima-nova-1", "proxima-nova-2";
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+}
+/*NAV*/
 .nav {
-    display:inline-block;
+  margin: 3em 0 5em 0;
+  text-align: center;
+  font-family: "proxima-nova-1", "proxima-nova-2";
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
 }
 .nav li {
-    float:left;
-    margin:0 .25em 0 0;
-    padding:.15em .65em;
-    border-radius:.65em;
-    background:rgb(100,100,100);
-    background:rgba(100,100,100,.6);
-    text-shadow:rgba(220,220,220,1);
+  display: inline-block;
+  margin: 0 .25em 0 0;
+  padding: .15em .65em;
+  border-radius: 5px;
+  background: #000000;
+  color: #f0f0d2;
 }
 .nav li:last-child {
-    margin:0;
+  margin: 0;
+}
+.nav a {
+  color: #f0f0d2;
+}
+.nav a:hover {
+  color: #d6d786;
+}
+/*EVENT*/
+.event {
+  /*    border-style:none none dashed none;
+    border-width:1px;
+    border-color:rgb(0,0,0);*/
+
+  margin: 0 0 3em 0;
+  padding: 1em 0;
+}
+.event .title {
+  font-size: 2em;
+  text-align: center;
+}
+.event .details {
+  display: table;
+  width: 100%;
+  border-top: 1px solid #000000;
+  font-size: .8em;
+  line-height: 1.1em;
+}
+.event .details li {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center !important;
+  padding-top: 1em;
+  height: 6em;
+}
+.distance {
+  background: url('../img/icon-pin.png') no-repeat center 1em;
+  border-right: 1px solid #000000;
+}
+.time-until {
+  background: url('../img/icon-calendar.png') no-repeat center 1em;
+  border-right: 1px solid #000000;
+}
+.attending {
+  background: url('../img/icon-grad.png') no-repeat center 1em;
+  border-right: 1px solid #000000;
+}
+.headcount {
+  background: url('../img/icon-people.png') no-repeat center 1em;
+}
+.event-detail .banner {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 300px;
+  margin: 0 0 1em 0;
+  padding: 1em;
+}
+.event-detail .details {
+  display: table;
+  width: 100%;
+  border-top: 1px solid #000000;
+  font-size: .8em;
+  line-height: 1.1em;
+}
+.event-detail .details li {
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center !important;
+  padding-top: 1em;
+  height: 6em;
+}
+/* search*/
+.categories .group {
+  border-bottom: 1px solid #000000;
+  margin: 0 0 4em 0;
+}
+.categories h4 {
+  margin: 3em 0;
+  padding: .5em 0;
+  text-align: center;
+  border-width: 1px;
+  border-style: dashed none;
+  border-color: #d6d786;
+  background: #ebebc3;
+  color: #6c6c24;
+}
+.categories .list-tags li {
+  font-size: 1.35em;
+  float: left;
+  margin: 0 1em 0 0;
+}
+.categories .list-table {
+  display: table;
+  width: 100%;
+  margin: 0 0 1px 0;
+}
+.categories .list-table li {
+  display: table-cell;
+  padding: .25em .5em;
+  border-bottom: 1px solid #000;
+}
+.categories .list-table .title {
+  border-right: 1px solid #000000;
+}
+.categories .list-table .distance {
+  background: none;
+}
+.categories .list-table .time-until {
+  background: none;
+  border-right: 0px solid #000000;
+}
+.about h4 {
+  margin: 4em 0 1em 0;
+}
+/*general less setup*/
+/*my notes*/
+/*#event-detail:before {
+    content:'NOTE: EVENT DETAIL PAGE';
+    display:block;
+    color:red;
 }
 
-
-
-/*event*/
-
-
-.event ul {
-    
+#feed:before {
+    content:'NOTE: FEED PAGE';
+    display:block;
+    color:red;
 }
-
-
+#categories:before {
+    content:'NOTE: CATEGORIES PAGE';
+    display:block;
+    color:red;
+}
+*/
 /* `Wide mobile devices styles
 ---------------------------------------- */
 @media only screen and (min-width: 480px) {
-	body {
-		
-	}
+  
 }
-
 /* `Tablets/netbooks styles
 ---------------------------------------- */
-@media only screen and (min-width: 768px) { 
-	body {
-		
-	}
+@media only screen and (min-width: 768px) {
+  body {
+    padding: 2em;
+  }
 }
-
 /* `Desktop devices styles
 ---------------------------------------- */
-@media only screen and (min-width: 1024px) { 
-	body {
-
-	}
+@media only screen and (min-width: 1024px) {
+  
 }
-
 /* `Print styles
 ---------------------------------------- */
 @media print {
-	* {
-		background: transparent !important;
-		color: black !important; /* The woes of CSS color in print typography: sanbeiji.com/archives/953 */
-		text-shadow: none !important;
-		filter: none !important;
-		-ms-filter: none !important;
-	}
-	a, a:visited {
-		color: #222 !important;
-		text-decoration: underline;
-	}
-	a[href]:after {
-		content: " (" attr(href) ")";
-	}
-	abbr[title]:after {
-		content: " (" attr(title) ")";
-	}
-	/* Do not show javascript and internal links */
-	a[href^="javascript:"]:after, a[href^="#"]:after {
-		content: ""; 
-	}
-	/* Printing Tables: css-discuss.incutio.com/wiki/Printing_Tables */
-	thead {
-		display: table-header-group;
-	}
-	tr, img {
-		page-break-inside: avoid;
-	}
-	@page {
-		margin: 0.5cm;
-	}
-	p, h2, h3 {
-		orphans: 3;
-		widows: 3;
-	}
-	h2, h3{
-		page-break-after: avoid;
-	}
+  * {
+    background: transparent !important;
+    color: black !important;
+    /* The woes of CSS color in print typography: sanbeiji.com/archives/953 */
+  
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+  a, a:visited {
+    color: #222 !important;
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /* Do not show javascript and internal links */
+  a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+  /* Printing Tables: css-discuss.incutio.com/wiki/Printing_Tables */
+  thead {
+    display: table-header-group;
+  }
+  tr, img {
+    page-break-inside: avoid;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2, h3 {
+    page-break-after: avoid;
+  }
 }
