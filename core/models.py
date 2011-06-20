@@ -186,10 +186,14 @@ class Program(models.Model):
     # attending = models.ForeignKey(User)
 
     def next_event(self):
-        try:
-            return self.events.order_by('date')[0]
-        except:
-            return None
+        import datetime
+        events = self.events.filter(date__gt=datetime.datetime.now()).order_by('date')
+        if events: 
+            return events[0].date
+        return None
+
+    def time_until(self):
+        return "hi"
 
     def __unicode__(self):
         return self.name

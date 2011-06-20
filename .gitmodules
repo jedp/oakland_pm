@@ -16,3 +16,6 @@
 [submodule "static/js/third_party/underscore"]
 	path = static/js/third_party/underscore
 	url = https://github.com/documentcloud/underscore/
+[submodule "static/js/third_party/jquery-timeago"]
+	path = static/js/third_party/jquery-timeago
+	url = https://github.com/rmm5t/jquery-timeago.git
